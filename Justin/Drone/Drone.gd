@@ -2,8 +2,8 @@ extends KinematicBody2D
 
 
 # Declare member variables here. Examples:
-#export var movement():
-# var b = "text"
+#export (func) var movement():
+export (int) var energy:
 
 
 # Called when the node enters the scene tree for the first time.
