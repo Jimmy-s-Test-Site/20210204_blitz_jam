@@ -21,12 +21,8 @@ _global_script_class_icons={
 [application]
 
 config/name="20210204 Blitz Jam"
-run/main_scene="res://Julian/Rooms/Room0/Room0.tscn"
+run/main_scene="res://Julian/Game/Game.tscn"
 config/icon="res://icon.png"
-
-[autoload]
-
-Rooms="*res://Julian/Rooms/Rooms.gd"
 
 [input]
 
