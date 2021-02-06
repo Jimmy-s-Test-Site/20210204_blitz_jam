@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Sprites/wall.png" type="Texture" id=1]
 [ext_resource path="res://Aubrie/Player.gd" type="Script" id=2]
@@ -34,6 +34,16 @@ points = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 } ]
 0/z_index = 0
 
+[sub_resource type="Curve2D" id=4]
+_data = {
+"points": PoolVector2Array( -88.7146, 9.24986, 88.7146, -9.24986, 135.441, -178.582, -0.840896, -24.386, 0.840896, 24.386, 184.213, -93.2309, -0.420448, -0.840896, 0.420448, 0.840896, 73.6347, -92.39, -65.1695, -24.386, 65.1695, 24.386, 73.6347, -174.377, 0, 0, 0, 0, 135.441, -178.582 )
+}
+
+[sub_resource type="Curve2D" id=5]
+_data = {
+"points": PoolVector2Array( -8.82941, -13.8748, 8.82941, 13.8748, 273.768, -142.844, 30.2723, -52.556, -30.2723, 52.556, 276.291, -51.6065, 8.82941, -4.20448, -8.82941, 4.20448, 148.895, -55.3905, -7.14762, 25.2269, 7.14762, -25.2269, 126.611, -96.5945, 0, 0, 0, 0, 200.61, -140.321, -29.8518, -17.2384, 29.8518, 17.2384, 273.768, -142.844 )
+}
+
 [node name="DemoRoom" type="Node2D"]
 
 [node name="Player" type="KinematicBody2D" parent="."]
@@ -57,8 +67,34 @@ cell_size = Vector2( 16, 16 )
 format = 1
 tile_data = PoolIntArray( -786442, 0, 0, -786441, 0, 0, -786440, 0, 0, -786439, 0, 0, -786438, 0, 0, -786437, 0, 0, -786436, 0, 0, -786435, 0, 0, -786434, 0, 0, -786433, 0, 0, -851968, 0, 0, -851967, 0, 0, -851966, 0, 0, -851965, 0, 0, -851964, 0, 0, -851963, 0, 0, -851962, 0, 0, -851961, 0, 0, -851960, 0, 0, -851959, 0, 0, -851958, 0, 0, -851957, 0, 0, -851956, 0, 0, -851955, 0, 0, -851954, 0, 0, -851953, 0, 0, -851952, 0, 0, -851951, 0, 0, -851950, 0, 0, -851949, 0, 0, -720906, 0, 0, -786413, 0, 0, -655370, 0, 0, -720877, 0, 0, -589834, 0, 0, -655341, 0, 0, -524298, 0, 0, -589805, 0, 0, -458762, 0, 0, -524269, 0, 0, -393226, 0, 0, -458733, 0, 0, -327690, 0, 0, -393206, 0, 0, -393205, 0, 0, -393204, 0, 0, -393203, 0, 0, -393202, 0, 0, -393197, 0, 0, -262154, 0, 0, -327661, 0, 0, -196618, 0, 0, -262125, 0, 0, -131082, 0, 0, -131079, 0, 0, -131078, 0, 0, -131077, 0, 0, -131076, 0, 0, -131075, 0, 0, -131074, 0, 0, -196604, 0, 0, -196603, 0, 0, -196602, 0, 0, -196601, 0, 0, -196600, 0, 0, -196589, 0, 0, -65546, 0, 0, -131053, 0, 0, -10, 0, 0, -65517, 0, 0, 65526, 0, 0, 65527, 0, 0, 65528, 0, 0, 65529, 0, 0, 65530, 0, 0, 65531, 0, 0, 65532, 0, 0, 65533, 0, 0, 65534, 0, 0, 65535, 0, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 10, 0, 0, 11, 0, 0, 12, 0, 0, 13, 0, 0, 14, 0, 0, 15, 0, 0, 16, 0, 0, 17, 0, 0, 18, 0, 0, 19, 0, 0 )
 
-[node name="Drone" parent="." instance=ExtResource( 3 )]
-position = Vector2( 95.8282, -78.7537 )
+[node name="ProjectileContainer" type="Node2D" parent="."]
 
-[node name="Drone2" parent="." instance=ExtResource( 3 )]
-position = Vector2( 71.4834, -116.774 )
+[node name="Drone-Path2D" type="Path2D" parent="."]
+position = Vector2( -89.135, 13.8748 )
+curve = SubResource( 4 )
+
+[node name="Drone-PathFollow2D" type="PathFollow2D" parent="Drone-Path2D"]
+position = Vector2( 135.441, -178.582 )
+rotate = false
+
+[node name="Drone" parent="Drone-Path2D/Drone-PathFollow2D" instance=ExtResource( 3 )]
+position = Vector2( -0.238953, 3.03415 )
+rotation = -1.56668
+DroneSpeed = 1
+ProjectileContainer = NodePath("../../../ProjectileContainer")
+
+[node name="Drone2-Path2D" type="Path2D" parent="."]
+position = Vector2( -5.16251, -16.3844 )
+scale = Vector2( 1.01773, 0.890568 )
+curve = SubResource( 5 )
+
+[node name="Drone2-PathFollow2D" type="PathFollow2D" parent="Drone2-Path2D"]
+position = Vector2( 273.768, -142.844 )
+rotation = 0.979639
+
+[node name="Drone2" parent="Drone2-Path2D/Drone2-PathFollow2D" instance=ExtResource( 3 )]
+position = Vector2( -0.0690918, 0.0466919 )
+rotation = -2.54683
+scale = Vector2( 0.280719, 0.245645 )
+DroneSpeed = 1
+ProjectileContainer = NodePath("../../../ProjectileContainer")
