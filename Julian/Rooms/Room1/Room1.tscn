@@ -48,6 +48,5 @@ position = Vector2( 256, 521 )
 
 [node name="DoorA" parent="." instance=ExtResource( 4 )]
 position = Vector2( 440.46, 509.7 )
-[connection signal="body_entered" from="DoorA" to="." method="_on_DoorA_body_entered"]
 
 [editable path="Player"]
