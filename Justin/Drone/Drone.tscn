@@ -1,14 +1,21 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Justin/Drone/Drone.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://Justin/Drone/Projectile.tscn" type="PackedScene" id=3]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 29.1022
-height = 19.5113
+radius = 31.8572
+height = 24.6942
 
 [node name="Drone" type="KinematicBody2D"]
+scale = Vector2( 0.25, 0.25 )
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+projectile = ExtResource( 3 )
+shootingAt = Vector2( 0, -1 )
 
 [node name="Drone_Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
@@ -16,4 +23,12 @@ texture = ExtResource( 2 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
 shape = SubResource( 1 )
+
+[node name="bullet_Timer" type="Timer" parent="."]
+
+[node name="SpawnRadius" type="Position2D" parent="."]
+position = Vector2( 60, 0 )
+[connection signal="tree_entered" from="." to="." method="_on_Drone_tree_entered"]
+[connection signal="timeout" from="bullet_Timer" to="." method="_on_bullet_Timer_timeout"]

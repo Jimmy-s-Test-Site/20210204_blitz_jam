@@ -8,14 +8,20 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Node2D",
+"class": "Room",
+"language": "GDScript",
+"path": "res://Julian/Rooms/Room.gd"
+} ]
 _global_script_class_icons={
-
+"Room": ""
 }
 
 [application]
 
 config/name="20210204 Blitz Jam"
+run/main_scene="res://Julian/Game/Game.tscn"
 config/icon="res://icon.png"
 
 [input]
