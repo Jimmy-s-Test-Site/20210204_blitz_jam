@@ -14,8 +14,7 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
-projectile = ExtResource( 3 )
-shootingAt = Vector2( 0, -1 )
+Projectile = ExtResource( 3 )
 
 [node name="Drone_Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
@@ -29,6 +28,8 @@ shape = SubResource( 1 )
 [node name="bullet_Timer" type="Timer" parent="."]
 
 [node name="SpawnRadius" type="Position2D" parent="."]
-position = Vector2( 60, 0 )
+position = Vector2( 45, 0 )
+
+[node name="ProjectileContainer" type="Node2D" parent="."]
 [connection signal="tree_entered" from="." to="." method="_on_Drone_tree_entered"]
 [connection signal="timeout" from="bullet_Timer" to="." method="_on_bullet_Timer_timeout"]
