@@ -4,6 +4,8 @@ const speed =100
 const gravity = 10
 const jump = -200
 const Floor = Vector2(0, -1)
+export (NodePath) var ProjectileContainer = get_parent().get_node("ProjectileContainer")
+var ShootingAt = Vector2.ZERO
 
 var velocity = Vector2()
 var on_ground = false
@@ -29,6 +31,8 @@ func _physics_process(delta):
 		
 	velocity.y += gravity
 	velocity = move_and_slide(velocity, Floor)
+
+
 	
 	
 
