@@ -6,12 +6,12 @@
 [ext_resource path="res://Julian/Items/Door/Door.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Justin/Drone/Drone.tscn" type="PackedScene" id=5]
 
-[sub_resource type="Curve2D" id=3]
+[sub_resource type="Curve2D" id=1]
 _data = {
 "points": PoolVector2Array( -81.4607, 2.37841, 81.4607, -2.37841, -0.985107, -84.6262, 32.1086, -48.1629, -32.1086, 48.1629, 69.1781, 52.1326, 29.7302, 64.8118, -29.7302, -64.8118, -74.716, 40.2405, -70.1632, -4.16222, 70.1632, 4.16222, -0.985107, -84.6262 )
 }
 
-[sub_resource type="Curve2D" id=4]
+[sub_resource type="Curve2D" id=2]
 _data = {
 "points": PoolVector2Array( 42.5404, -22.4952, -42.5404, 22.4952, -30.9799, -96.1398, -20.0226, -82.7601, 20.0226, 82.7601, -106.98, 25.8602, -17.3529, 33.371, 17.3529, -33.371, -12.9799, 77.8602, -42.7149, 21.3574, 42.7149, -21.3574, 191.02, 74.8602, 62.7375, -61.4026, -62.7375, 61.4026, 128.844, -28.0811, 47.8858, -29.1769, -47.8858, 29.1769, -30.9799, -96.1398 )
 }
@@ -52,7 +52,7 @@ __meta__ = {
 }
 
 [node name="Path2D" type="Path2D" parent="Drones/Drone1"]
-curve = SubResource( 3 )
+curve = SubResource( 1 )
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Drones/Drone1/Path2D"]
 position = Vector2( -0.985107, -84.6262 )
@@ -71,11 +71,10 @@ __meta__ = {
 }
 
 [node name="Path2D" type="Path2D" parent="Drones/Drone2"]
-curve = SubResource( 4 )
+curve = SubResource( 2 )
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Drones/Drone2/Path2D"]
 position = Vector2( -30.9799, -96.1398 )
-rotation = 2.66084
 rotate = false
 
 [node name="Drone" parent="Drones/Drone2/Path2D/PathFollow2D" instance=ExtResource( 5 )]
