@@ -4,6 +4,8 @@ const room := preload("res://Julian/Rooms/Rooms.gd")
 
 export(float) var fade_time
 
+var total_points : int = 0
+
 func _ready():
 	self.load_room(room.Names.Room0)
 
