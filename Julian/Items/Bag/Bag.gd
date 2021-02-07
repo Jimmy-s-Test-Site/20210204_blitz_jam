@@ -15,7 +15,7 @@ func _physics_process(delta):
 		mode = RigidBody2D.MODE_STATIC
 		held = true
 	position += velocity * speed * delta 
-	$bag.play("pickup")
+	
 	
 func drop(impulse=Vector2.ZERO):
 	if Input.is_action_pressed("drop"): 

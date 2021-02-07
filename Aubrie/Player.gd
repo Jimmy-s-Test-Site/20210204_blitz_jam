@@ -6,16 +6,17 @@ extends KinematicBody2D
 const Floor = Vector2(0, -1)
 const Shoot = preload("res://Aubrie/Player Shooting.tscn")
 #Added for pickup
-const PickUp = preload ("res://Aubrie/BagMech.tscn")
+#const PickUp = preload ("res://Aubrie/Bag.tscn")
 
 export (int) var speed = 175
 export (int) var gravity = 10
 export (int) var jump = -300
 export (NodePath) var BulletContainerPath
-export (NodePath) var BagPickDrop
+#export (NodePath) var BagPickDrop
 
 var velocity = Vector2()
 var on_ground = false
+var BackPickup = null
 
 func _ready():
 	$AnimationPlayer.play("IdleRight")
@@ -44,12 +45,14 @@ func _physics_process(delta):
 	
 	#Added 
 	if Input.is_action_pressed ("pickup"):
-		var bag = PickUp.instance()
-		bag.global_position= self.global_position
-		get_node(BagPickDrop).add_child(bag)
-		bag.position = $Position2D.global_position
-		
-		
+		if self.BagPickup != null:
+			self.BagPickup = null
+		else:
+			for i in get_slide_count():
+				var collision = get_slide_collision(i)
+				if collision.collider.name.begins_with("Bag"):
+					self.BagPickup = collision.collider
+				self.BagPickup
 		
 	on_ground = is_on_floor()
 		
