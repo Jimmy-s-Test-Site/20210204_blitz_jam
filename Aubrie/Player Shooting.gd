@@ -7,16 +7,15 @@ var velocity = Vector2()
 func _ready():
 	pass # Replace with function body.
 
+
 func _physics_process(delta):
-	velocity.x = Speed * delta
-	translate(velocity)
+#	velocity.x = Speed * delta
+#	translate(velocity)
+	position += velocity * Speed *delta
+	$AnimatedSprite.play("shoot")
 		
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+func _on_VisibilityNotifier2D_screen_exited():
+	queue_free()
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+
