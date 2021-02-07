@@ -33,7 +33,8 @@ func _ready():
 func _physics_process(delta):
 	match Move_Type:
 		MOVEMENT.chase:
-			MoveToPlayer = self.global_position - self.get_node(PlayerNodePath).global_position
+			pass
+			#MoveToPlayer = self.global_position - self.get_node(PlayerNodePath).global_position
 			#self.position = MoveToPlayer + DroneSpeed + delta
 		MOVEMENT.path:
 			MovementLoop(delta) #call movement loop every frame
