@@ -8,5 +8,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	move_and_slide(direction * speed * delta)
+	var collision = move_and_collide(direction * speed * delta)
 	self.rotate(deg2rad(2)) #rotate at 2 radians
+	if collision:
+		queue_free()
+
+

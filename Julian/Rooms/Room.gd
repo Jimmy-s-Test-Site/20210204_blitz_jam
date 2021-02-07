@@ -4,10 +4,17 @@ class_name Room
 signal goto_room
 
 const room := preload("res://Julian/Rooms/Rooms.gd")
-const room_scenes := room.SceneLocations
-const room_names := room.Names
 
-export (room.Names) var exit_a : int
+export (Array, NodePath) var door_paths
 
-func exit(exit_name : int) -> void:
-	self.emit_signal("goto_room", exit_name)
+func _ready() -> void:
+	for door_path in self.door_paths:
+		var door : Area2D = self.get_node(door_path)
+		self.on_Door_body_entered(door)
+
+func on_Door_body_entered(door : Area2D) -> void:
+	yield(door, "body_entered")
+	self.exit(door)
+
+func exit(door : Area2D) -> void:
+	self.emit_signal("goto_room", door.destination)
