@@ -17,6 +17,8 @@ export (NodePath) var PlayerNodePath
 var target 											#Target to shoot
 
 onready var EnemyToPlayer = self.global_position
+onready var MoveToPlayer = self.global_position
+
 onready var shoot_Timer = $bullet_Timer 			#A timer node called bullet_Timer
 onready var path_follow = get_parent()				#Variable to follow Path2D
 
@@ -25,20 +27,19 @@ onready var path_follow = get_parent()				#Variable to follow Path2D
 ###In Path2D make sure 'rotate' is off & 'rotation' is set to 0.
 
 func _ready():
-	#shoot()
 	shoot_Timer.start(BulletDelay) #start bullet timer
-#		$DroneVision/RayCast2D.add_collision_exception(self) #add exception for if raycast collides wih self
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	match Move_Type:
 		MOVEMENT.chase:
-			pass
+			MoveToPlayer = self.global_position - self.get_node(PlayerNodePath).global_position
+			#self.position = MoveToPlayer + DroneSpeed + delta
 		MOVEMENT.path:
 			MovementLoop(delta) #call movement loop every frame
 		MOVEMENT.stationary:	
 			pass
-################################################################################################################
+
 func _process(delta):
 #	if self.get_node(PlayerNodePath).global_position != null:
 	EnemyToPlayer = self.global_position - self.get_node(PlayerNodePath).global_position
@@ -47,7 +48,7 @@ func MovementLoop(delta): #move along the PathFollow2D
 	var prepos = path_follow.get_global_position()
 	path_follow.set_offset(path_follow.get_offset() + DroneSpeed + delta)
 	var pos = path_follow.get_global_position()
-	move_direction = (pos.angle_to_point(prepos) / 3.14)*180  #if you need to turn the drone
+	move_direction = (pos.angle_to_point(prepos) / 3.14)*180  #if need to turn the drone facing direction
 	
 func shoot(): #Method to create an instanced projectile and shoot it a direction
 	print ("SHOOTING!")#############################

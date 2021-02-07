@@ -1,12 +1,13 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Justin/Drone/Projectile.gd" type="Script" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Drone Bullet-transparent.png" type="Texture" id=2]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 31.9084, 32.1231 )
+[sub_resource type="CircleShape2D" id=1]
+radius = 7.01025
 
 [node name="Projectile" type="KinematicBody2D"]
+position = Vector2( 0.362409, -0.362567 )
 scale = Vector2( 0.2, 0.2 )
 script = ExtResource( 1 )
 __meta__ = {
@@ -14,9 +15,12 @@ __meta__ = {
 }
 
 [node name="Sprite" type="Sprite" parent="."]
+position = Vector2( -1.30216, 1.67421 )
+scale = Vector2( 1.031, 0.989666 )
 texture = ExtResource( 2 )
 
 [node name="Projectile_Collider" type="CollisionShape2D" parent="."]
+position = Vector2( -1.84154, 1.84154 )
 shape = SubResource( 1 )
 __meta__ = {
 "_edit_group_": true

@@ -44,6 +44,7 @@ _data = {
 
 [node name="RoomTesting" type="Node2D"]
 script = ExtResource( 3 )
+door_container_path = NodePath("DoorContainer")
 
 [node name="TileMap" type="TileMap" parent="."]
 scale = Vector2( 2, 2 )
@@ -62,7 +63,6 @@ destination = 1
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 213.574, 191.217 )
 speed = 300
-jump = -400
 BulletContainerPath = NodePath("../../RoomTesting/ProjectileContainer")
 
 [node name="ProjectileContainer" type="Node2D" parent="."]
@@ -80,15 +80,16 @@ curve = SubResource( 3 )
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Drones/Drone1/Path2D"]
 position = Vector2( -0.985107, -84.6262 )
-rotation = -0.00971394
+rotate = false
 
 [node name="Drone" parent="Drones/Drone1/Path2D/PathFollow2D" instance=ExtResource( 5 )]
 DroneSpeed = 2
 ProjectileContainer = NodePath("../../../../../../RoomTesting/ProjectileContainer")
+Move_Type = 1
 PlayerNodePath = NodePath("../../../../../../RoomTesting/Player")
 
 [node name="Drone2" type="Node2D" parent="Drones"]
-position = Vector2( 464.98, 315.14 )
+position = Vector2( 465.924, 315.14 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -98,9 +99,10 @@ curve = SubResource( 4 )
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Drones/Drone2/Path2D"]
 position = Vector2( -30.9799, -96.1398 )
-rotation = 2.66084
+rotate = false
 
 [node name="Drone" parent="Drones/Drone2/Path2D/PathFollow2D" instance=ExtResource( 5 )]
 DroneSpeed = 2
 ProjectileContainer = NodePath("../../../../../../RoomTesting/ProjectileContainer")
+Move_Type = 2
 PlayerNodePath = NodePath("../../../../../../RoomTesting/Player")
