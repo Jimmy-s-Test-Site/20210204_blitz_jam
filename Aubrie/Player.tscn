@@ -3,13 +3,13 @@
 [ext_resource path="res://Aubrie/Player.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 
-[sub_resource type="CapsuleShape2D" id=1]
-radius = 36.0812
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 29.7173, 41.7842 )
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=6]
 resource_name = "IdleLeft"
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:flip_h")
+tracks/0/path = NodePath("Position2D:rotation_degrees")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -17,8 +17,8 @@ tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
+"update": 0,
+"values": [ 0.0 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Position2D:position")
@@ -30,13 +30,13 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( -53, 0 ) ]
+"values": [ Vector2( -34, 0 ) ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=7]
 resource_name = "IdleRight"
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:flip_h")
+tracks/0/path = NodePath("Position2D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -44,11 +44,11 @@ tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
+"update": 0,
+"values": [ Vector2( 34, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Position2D:position")
+tracks/1/path = NodePath("Position2D:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -57,14 +57,15 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 53.715, 0 ) ]
+"values": [ 0.0 ]
 }
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 1 )
+jump = -450
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
+shape = SubResource( 5 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
@@ -74,12 +75,12 @@ scale = Vector2( 1.02673, 1.30329 )
 texture = ExtResource( 2 )
 flip_h = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/IdleLeft = SubResource( 2 )
-anims/IdleRight = SubResource( 3 )
-
 [node name="Position2D" type="Position2D" parent="."]
-position = Vector2( -53, 0 )
+position = Vector2( -34, 0 )
 __meta__ = {
 "_gizmo_extents_": 39.1
 }
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/IdleLeft = SubResource( 6 )
+anims/IdleRight = SubResource( 7 )

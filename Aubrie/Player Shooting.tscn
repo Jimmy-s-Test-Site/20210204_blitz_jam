@@ -15,7 +15,7 @@ animations = [ {
 extents = Vector2( 31, 30 )
 
 [node name="Player Shooting" type="Area2D"]
-scale = Vector2( 0.3, 0.3 )
+scale = Vector2( 0.1, 0.1 )
 script = ExtResource( 3 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
@@ -30,5 +30,4 @@ shape = SubResource( 2 )
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
 position = Vector2( -0.499998, -0.500003 )
 scale = Vector2( 3.05, 3.05 )
-[connection signal="body_entered" from="." to="." method="_on_Player_Shooting_body_entered"]
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
