@@ -1,27 +1,28 @@
 extends KinematicBody2D
 ###will need to set ProjectileContainer to empty 2DNODE in (PARENT) Node...aka Room
 enum BEHAVIOURS {good, bad, neutral}
+enum MOVEMENT {stationary, path, chase}
 
 export (Curve2D) var DronePath						#The # and location of each Stop on Path
 export (int) var DroneSpeed := 500 					#drone movement speed
-var move_direction = 0 								#movement direction
+var move_direction = 0 								#movement facing direction
 export (float) var BulletDelay := 0.7 				#delay before next bullet fires
 export (PackedScene) var Projectile 				#droppable container for projectile scene
-export (NodePath) var ProjectileContainer# = get_parent().get_node("ProjectileContainer")#The NODEPATH to the Projectile Container
+export (NodePath) var ProjectileContainer			#The NODEPATH to the Projectile Container
 export (int) var Energy := 2 						#drone Energy/HP
 export (Vector2) var ShootingAt := Vector2(-1,0)    #what it's target is. Player/Mannequin/free shooting
 export (BEHAVIOURS) var Hostility = BEHAVIOURS.good	#Tells if drone is good/bad/neutral
+export (MOVEMENT) var Move_Type = MOVEMENT.stationary #Tells type of movement statiionary/path/chase
 export (NodePath) var PlayerNodePath
-var target 
+var target 											#Target to shoot
 
-onready var EnemyToPlayer = self.global_position#####################
-#		var self_position_to_player = self.global_position - self.Player.global_position
-#onready var EnemyToPlayer = self.global_position - self.get_node(PlayerNodePath).global_position
+onready var EnemyToPlayer = self.global_position
 onready var shoot_Timer = $bullet_Timer 			#A timer node called bullet_Timer
-onready var path_follow = get_parent()#Variable to follow Path2D
+onready var path_follow = get_parent()				#Variable to follow Path2D
 
 ###FOR MOVE PATH-make new Path2D node and then a child node of PathFollow2D. 'Enemy' as child of PathFollow2D.
 ###In Path2D add 'curve' on right side side then click small buttons in middle at top to draw path. 'close path'
+###In Path2D make sure 'rotate' is off & 'rotation' is set to 0.
 
 func _ready():
 	#shoot()
@@ -30,8 +31,14 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	MovementLoop(delta) #call movement loop every frame
-	
+	match Move_Type:
+		MOVEMENT.chase:
+			pass
+		MOVEMENT.path:
+			MovementLoop(delta) #call movement loop every frame
+		MOVEMENT.stationary:	
+			pass
+################################################################################################################
 func _process(delta):
 #	if self.get_node(PlayerNodePath).global_position != null:
 	EnemyToPlayer = self.global_position - self.get_node(PlayerNodePath).global_position
@@ -66,6 +73,7 @@ func _on_DroneVision_body_entered(body):
 		BEHAVIOURS.bad:
 			if bodyIsPlayer or bodyIsGoodDrone:
 				target = body
+				
 		BEHAVIOURS.good:
 			if bodyIsBadDrone:
 				target = body	

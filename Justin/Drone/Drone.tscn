@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Justin/Drone/Drone.gd" type="Script" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/DroneTransparent.png" type="Texture" id=2]
 [ext_resource path="res://Justin/Drone/Projectile.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Justin/Drone/RayCast2D.gd" type="Script" id=4]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -18,8 +17,10 @@ height = 24.6942
 radius = 16.262
 
 [node name="Drone" type="KinematicBody2D"]
-scale = Vector2( 0.25, 0.25 )
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
 DronePath = SubResource( 1 )
 DroneSpeed = 450
 Projectile = ExtResource( 3 )
@@ -46,11 +47,6 @@ modulate = Color( 0.815686, 0.815686, 0.815686, 1 )
 show_behind_parent = true
 scale = Vector2( 30, 30 )
 shape = SubResource( 3 )
-
-[node name="RayCast2D" type="RayCast2D" parent="DroneVision"]
-enabled = true
-cast_to = Vector2( 0, 170 )
-script = ExtResource( 4 )
 [connection signal="timeout" from="bullet_Timer" to="." method="_on_bullet_Timer_timeout"]
 [connection signal="body_entered" from="DroneVision" to="." method="_on_DroneVision_body_entered"]
 [connection signal="body_exited" from="DroneVision" to="." method="_on_DroneVision_body_exited"]
