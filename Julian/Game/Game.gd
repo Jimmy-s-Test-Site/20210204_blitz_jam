@@ -7,7 +7,7 @@ export(float) var fade_time
 var total_points : int = 0
 
 func _ready():
-	self.load_room(room.Names.Room0)
+	self.load_room(self.room.Names.Room0)
 
 func load_room(room_name : int):
 	$CanvasLayer/AnimationPlayer.play("fade_in")
@@ -28,6 +28,9 @@ func remove_all_rooms():
 			if node.is_connected("goto_room", self, "load_room"):
 				node.disconnect("goto_room", self, "load_room")
 			
+			if node.is_connected("add_points", self, "add_points"):
+				node.disconnect("add_points", self, "add_points")
+			
 			node.queue_free()
 
 func add_room(room_name : int):
@@ -36,4 +39,12 @@ func add_room(room_name : int):
 	if not room_scene.is_connected("goto_room", self, "load_room"):
 		room_scene.connect("goto_room", self, "load_room")
 	
+	if not room_scene.is_connected("add_points", self, "add_points"):
+		room_scene.connect("add_points", self, "add_points")
+	
 	self.add_child(room_scene)
+
+func add_points(points : int):
+	self.total_points += points
+	
+	print(self.total_points)
