@@ -43,17 +43,12 @@ func MovementLoop(delta): #move along the PathFollow2D
 	move_direction = (pos.angle_to_point(prepos) / 3.14)*180  #if you need to turn the drone
 	
 func shoot(): #Method to create an instanced projectile and shoot it a direction
-#	if BEHAVIOURS.bad:
-#		if $Player.position <
 	print ("SHOOTING!")#############################
 	var new_bullet = Projectile.instance()
-	var spawnRadius = $SpawnRadius.position * $SpawnRadius.global_scale
-	print(target)
-	var droneToTarget = (target.global_position - self.global_position).normalized() #gives direction only
-	print(spawnRadius)
-	new_bullet.position = self.position + droneToTarget * spawnRadius.length()
+	new_bullet.global_position=self.global_position
 	new_bullet.name = "Projectile"
 	new_bullet.direction = self.ShootingAt
+	new_bullet.DroneOwner = self
 	get_node(ProjectileContainer).add_child(new_bullet)
 
 func _on_bullet_Timer_timeout():#on timeout - shoot and restart timer
