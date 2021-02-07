@@ -5,11 +5,14 @@ extends KinematicBody2D
 #const jump = -300
 const Floor = Vector2(0, -1)
 const Shoot = preload("res://Aubrie/Player Shooting.tscn")
+#Added for pickup
+const PickUp = preload ("res://Aubrie/BagMech.tscn")
 
 export (int) var speed = 175
 export (int) var gravity = 10
 export (int) var jump = -300
 export (NodePath) var BulletContainerPath
+export (NodePath) var BagPickDrop
 
 var velocity = Vector2()
 var on_ground = false
@@ -38,6 +41,15 @@ func _physics_process(delta):
 		bullet.velocity = get_local_mouse_position().normalized()
 		get_node(BulletContainerPath).add_child(bullet)
 		bullet.position = $Position2D.global_position
+	
+	#Added 
+	if Input.is_action_pressed ("pickup"):
+		var bag = PickUp.instance()
+		bag.global_position= self.global_position
+		get_node(BagPickDrop).add_child(bag)
+		bag.position = $Position2D.global_position
+		
+		
 		
 	on_ground = is_on_floor()
 		

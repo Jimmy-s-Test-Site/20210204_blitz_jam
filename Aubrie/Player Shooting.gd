@@ -12,6 +12,7 @@ func _ready():
 func _physics_process(delta):
 #	velocity.x = Speed * delta
 #	translate(velocity)
+	self.rotate(deg2rad(8)) #rotate at 2 radians
 	position += velocity * Speed * delta * direction
 	$AnimatedSprite.play("shoot")
 		

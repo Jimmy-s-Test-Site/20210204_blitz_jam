@@ -1,11 +1,11 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Drone Bullet-transparent.png" type="Texture" id=1]
 [ext_resource path="res://Aubrie/Player Shooting.gd" type="Script" id=3]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 2 ) ],
+"frames": [ ExtResource( 1 ) ],
 "loop": true,
 "name": "shoot",
 "speed": 12.0
@@ -19,6 +19,7 @@ scale = Vector2( 0.1, 0.1 )
 script = ExtResource( 3 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+scale = Vector2( 4, 4 )
 frames = SubResource( 1 )
 animation = "shoot"
 playing = true
