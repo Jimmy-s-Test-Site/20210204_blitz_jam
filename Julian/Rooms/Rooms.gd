@@ -7,7 +7,7 @@ enum Names {
 	Room3,
 	Room4,
 	
-	RoomEnd,
+	RoomEnd
 }
 
 const Scenes = {
