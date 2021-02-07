@@ -1,11 +1,14 @@
 extends KinematicBody2D
 
-const speed =175
-const gravity = 10
-const jump = -300
+#const speed =175
+#const gravity = 10
+#const jump = -300
 const Floor = Vector2(0, -1)
 const Shoot = preload("res://Aubrie/Player Shooting.tscn")
 
+export (int) var speed = 175
+export (int) var gravity = 10
+export (int) var jump = -300
 export (NodePath) var BulletContainerPath
 
 var velocity = Vector2()
