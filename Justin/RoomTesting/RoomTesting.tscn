@@ -1,0 +1,106 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Aubrie/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Sprites/wall.png" type="Texture" id=2]
+[ext_resource path="res://Justin/RoomTesting/RoomTesting.gd" type="Script" id=3]
+[ext_resource path="res://Julian/Items/Door/Door.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Justin/Drone/Drone.tscn" type="PackedScene" id=5]
+
+[sub_resource type="ConvexPolygonShape2D" id=1]
+points = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
+
+[sub_resource type="TileSet" id=2]
+0/name = "wall.png 0"
+0/texture = ExtResource( 2 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 16, 16 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape = SubResource( 1 )
+0/shape_one_way = false
+0/shape_one_way_margin = 1.0
+0/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+0/z_index = 0
+
+[sub_resource type="Curve2D" id=3]
+_data = {
+"points": PoolVector2Array( -81.4607, 2.37841, 81.4607, -2.37841, -0.985107, -84.6262, 32.1086, -48.1629, -32.1086, 48.1629, 69.1781, 52.1326, 29.7302, 64.8118, -29.7302, -64.8118, -74.716, 40.2405, -70.1632, -4.16222, 70.1632, 4.16222, -0.985107, -84.6262 )
+}
+
+[sub_resource type="Curve2D" id=4]
+_data = {
+"points": PoolVector2Array( 42.5404, -22.4952, -42.5404, 22.4952, -30.9799, -96.1398, -20.0226, -82.7601, 20.0226, 82.7601, -106.98, 25.8602, -17.3529, 33.371, 17.3529, -33.371, -12.9799, 77.8602, -42.7149, 21.3574, 42.7149, -21.3574, 191.02, 74.8602, 62.7375, -61.4026, -62.7375, 61.4026, 128.844, -28.0811, 47.8858, -29.1769, -47.8858, 29.1769, -30.9799, -96.1398 )
+}
+
+[node name="RoomTesting" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="TileMap" type="TileMap" parent="."]
+scale = Vector2( 2, 2 )
+tile_set = SubResource( 2 )
+cell_size = Vector2( 16, 16 )
+cell_custom_transform = Transform2D( 16, 0, 0, 16, 0, 0 )
+format = 1
+tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 10, 0, 0, 11, 0, 0, 12, 0, 0, 13, 0, 0, 14, 0, 0, 15, 0, 0, 16, 0, 0, 17, 0, 0, 18, 0, 0, 19, 0, 0, 20, 0, 0, 21, 0, 0, 22, 0, 0, 23, 0, 0, 24, 0, 0, 25, 0, 0, 26, 0, 0, 27, 0, 0, 28, 0, 0, 29, 0, 0, 30, 0, 0, 31, 0, 0, 65536, 0, 0, 65567, 0, 0, 131072, 0, 0, 131103, 0, 0, 196608, 0, 0, 196639, 0, 0, 262144, 0, 0, 262175, 0, 0, 327680, 0, 0, 327711, 0, 0, 393216, 0, 0, 393247, 0, 0, 458752, 0, 0, 458783, 0, 0, 524288, 0, 0, 524319, 0, 0, 589824, 0, 0, 589828, 0, 0, 589829, 0, 0, 589830, 0, 0, 589831, 0, 0, 589832, 0, 0, 589847, 0, 0, 589848, 0, 0, 589849, 0, 0, 589850, 0, 0, 589851, 0, 0, 589855, 0, 0, 655360, 0, 0, 655391, 0, 0, 720896, 0, 0, 720927, 0, 0, 786432, 0, 0, 786463, 0, 0, 851968, 0, 0, 851982, 0, 0, 851983, 0, 0, 851984, 0, 0, 851985, 0, 0, 851986, 0, 0, 851987, 0, 0, 851999, 0, 0, 917504, 0, 0, 917535, 0, 0, 983040, 0, 0, 983071, 0, 0, 1048576, 0, 0, 1048607, 0, 0, 1114112, 0, 0, 1114143, 0, 0, 1179648, 0, 0, 1179649, 0, 0, 1179650, 0, 0, 1179651, 0, 0, 1179652, 0, 0, 1179653, 0, 0, 1179654, 0, 0, 1179655, 0, 0, 1179656, 0, 0, 1179657, 0, 0, 1179658, 0, 0, 1179659, 0, 0, 1179660, 0, 0, 1179661, 0, 0, 1179662, 0, 0, 1179663, 0, 0, 1179664, 0, 0, 1179665, 0, 0, 1179666, 0, 0, 1179667, 0, 0, 1179668, 0, 0, 1179669, 0, 0, 1179670, 0, 0, 1179671, 0, 0, 1179672, 0, 0, 1179673, 0, 0, 1179674, 0, 0, 1179675, 0, 0, 1179676, 0, 0, 1179677, 0, 0, 1179678, 0, 0, 1179679, 0, 0 )
+
+[node name="DoorContainer" type="Node2D" parent="."]
+
+[node name="DoorA" parent="DoorContainer" instance=ExtResource( 4 )]
+position = Vector2( 135.56, 513.48 )
+destination = 1
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 213.574, 191.217 )
+speed = 300
+jump = -400
+BulletContainerPath = NodePath("../../RoomTesting/ProjectileContainer")
+
+[node name="ProjectileContainer" type="Node2D" parent="."]
+
+[node name="Drones" type="Node2D" parent="."]
+
+[node name="Drone1" type="Node2D" parent="Drones"]
+position = Vector2( 793.201, 161.732 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Path2D" type="Path2D" parent="Drones/Drone1"]
+curve = SubResource( 3 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Drones/Drone1/Path2D"]
+position = Vector2( -0.985107, -84.6262 )
+rotation = -0.00971394
+
+[node name="Drone" parent="Drones/Drone1/Path2D/PathFollow2D" instance=ExtResource( 5 )]
+DroneSpeed = 2
+ProjectileContainer = NodePath("../../../../../../RoomTesting/ProjectileContainer")
+PlayerNodePath = NodePath("../../../../../../RoomTesting/Player")
+
+[node name="Drone2" type="Node2D" parent="Drones"]
+position = Vector2( 464.98, 315.14 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Path2D" type="Path2D" parent="Drones/Drone2"]
+curve = SubResource( 4 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Drones/Drone2/Path2D"]
+position = Vector2( -30.9799, -96.1398 )
+rotation = 2.66084
+
+[node name="Drone" parent="Drones/Drone2/Path2D/PathFollow2D" instance=ExtResource( 5 )]
+DroneSpeed = 2
+ProjectileContainer = NodePath("../../../../../../RoomTesting/ProjectileContainer")
+PlayerNodePath = NodePath("../../../../../../RoomTesting/Player")
