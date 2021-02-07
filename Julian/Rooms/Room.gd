@@ -5,11 +5,14 @@ signal goto_room
 
 const room := preload("res://Julian/Rooms/Rooms.gd")
 
-export (Array, NodePath) var door_paths
+export(Array, NodePath) var door_paths
+
+export(NodePath) var door_container_path
 
 func _ready() -> void:
-	for door_path in self.door_paths:
-		var door : Area2D = self.get_node(door_path)
+	var door_container : Node2D = self.get_node(self.door_container_path)
+	
+	for door in door_container.get_children():
 		self.on_Door_body_entered(door)
 
 func on_Door_body_entered(door : Area2D) -> void:
