@@ -12,13 +12,15 @@ func set_shooting_direction(dir):
 	direction = dir
 	if dir == -1:
 		$AnimatedSprite.flip_h = true
+		
 
 func _physics_process(delta):
 #	velocity.x = Speed * delta
 #	translate(velocity)
 	self.rotate(deg2rad(8)) #rotate at 2 radians
 	position += velocity * Speed * delta #* direction
-	$AnimatedSprite.play("Shoot")
+	$AnimatedSprite.play("bullet")
+	
 		
 func _on_VisibilityNotifier2D_screen_exited():
 	queue_free()
