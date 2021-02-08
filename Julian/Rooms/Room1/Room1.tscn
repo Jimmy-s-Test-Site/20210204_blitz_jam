@@ -16,9 +16,11 @@ script = ExtResource( 3 )
 door_container_path = NodePath("DoorContainer")
 
 [node name="cyberpunk-street" type="Sprite" parent="."]
-position = Vector2( 358.107, 304.411 )
+position = Vector2( 511.342, 304.411 )
 scale = Vector2( 2.85674, 3.02724 )
 texture = ExtResource( 6 )
+region_enabled = true
+region_rect = Rect2( 100, 1, 347, 186 )
 
 [node name="TileMap" type="TileMap" parent="."]
 scale = Vector2( 2, 2 )
