@@ -34,12 +34,12 @@ custom_colors/font_color = Color( 1, 1, 1, 1 )
 [node name="DoorContainer" type="Node2D" parent="."]
 
 [node name="DoorA" parent="DoorContainer" instance=ExtResource( 4 )]
-position = Vector2( 78.6987, 528.342 )
+position = Vector2( 85.834, 514.072 )
 destination = 1
 points = -5
 
 [node name="DoorB" parent="DoorContainer" instance=ExtResource( 4 )]
-position = Vector2( 912.888, 528.145 )
+position = Vector2( 912.888, 513.875 )
 destination = 1
 points = 5
 

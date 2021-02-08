@@ -4,16 +4,17 @@
 [ext_resource path="res://Julian/Items/Door/Door.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 30, 43.9424 )
+extents = Vector2( 42, 60 )
 
 [node name="Door" type="Area2D"]
 script = ExtResource( 2 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
-
 [node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 2, 2 )
+position = Vector2( 1, -1 )
+scale = Vector2( 3, 3 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 33, 695, 31, 41 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
