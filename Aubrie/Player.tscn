@@ -105,7 +105,7 @@ position = Vector2( -1.06065, 3.30812 )
 scale = Vector2( 0.926407, 1.37734 )
 frames = SubResource( 9 )
 animation = "Shoot"
-frame = 3
+frame = 7
 playing = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
@@ -113,7 +113,7 @@ position = Vector2( -1.06065, 3.30812 )
 scale = Vector2( 0.926407, 1.37734 )
 frames = SubResource( 8 )
 animation = "Idle"
-frame = 1
+frame = 3
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
