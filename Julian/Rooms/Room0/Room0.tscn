@@ -12,9 +12,11 @@ script = ExtResource( 3 )
 door_container_path = NodePath("DoorContainer")
 
 [node name="cyberpunk-street" type="Sprite" parent="."]
-position = Vector2( 759.91, 292.464 )
+position = Vector2( 514.023, 299.591 )
 scale = Vector2( 2.79631, 3.27323 )
 texture = ExtResource( 6 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 365.853, 190.032 )
 
 [node name="TileMap" type="TileMap" parent="."]
 scale = Vector2( 2, 2 )
@@ -27,6 +29,7 @@ tile_data = PoolIntArray( -1, 0, 0, -65536, 0, 0, -65535, 0, 0, -65534, 0, 0, -6
 [node name="Labels" type="Node2D" parent="."]
 
 [node name="DoorBLabel" parent="Labels" instance=ExtResource( 5 )]
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 
 [node name="DoorContainer" type="Node2D" parent="."]
 
