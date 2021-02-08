@@ -6,8 +6,6 @@ signal add_points
 
 const room := preload("res://Julian/Rooms/Rooms.gd")
 
-export(Array, NodePath) var door_paths
-
 export(NodePath) var door_container_path
 
 func _ready() -> void:
@@ -17,6 +15,7 @@ func _ready() -> void:
 		self.on_Door_body_entered(door)
 
 func on_Door_body_entered(door : Area2D) -> void:
+	print(door)
 	yield(door, "body_entered")
 	self.exit(door)
 
