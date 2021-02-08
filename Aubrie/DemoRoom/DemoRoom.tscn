@@ -33,7 +33,7 @@ points = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 [node name="DemoRoom" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( -104.237, -65.9182 )
+position = Vector2( -101.431, -70.4081 )
 scale = Vector2( 0.4, 0.4 )
 BulletContainerPath = NodePath("../BulletContainer")
 
