@@ -16,21 +16,43 @@ export (NodePath) var BulletContainerPath
 
 var velocity = Vector2()
 var on_ground = false
-var BackPickup = null
+#var BagPickup = null
+#var BagDrop = null
 
-func _ready():
-	$AnimationPlayer.play("IdleRight")
+#func _ready():
+#	$AnimatedSprite.play("Run")
 	
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	if Input.is_action_pressed("left"): 
-		velocity.x = -speed 
-	elif Input.is_action_pressed("right"):
+	if Input.is_action_pressed("right"): 
 		velocity.x = speed
+		$AnimatedSprite.play("run")
+#		$AnimatedSprite.flip_h = false
+#		if sign($Position2D.position.x) == -1:
+#			$Position2D.position.x *= -1
+	elif Input.is_action_pressed("left"):
+		velocity.x = -speed
+		$AnimatedSprite.play("run")
+#		$AnimatedSprite.flip_h = true
+#		if sign($Position2D.position.x) == 1:
+#			$Position2D.position.x *= -1
 	else:
 		velocity.x =0 
+		if on_ground == true:
+			$AnimatedSprite.play("Idle")
 			
+	match int(sign(get_local_mouse_position().x)):
+		-1:
+			$AnimatedSprite.flip_h = true
+			if sign($Position2D.position.x) == 1:
+				$Position2D.position.x *= -1
+		1:
+			$AnimatedSprite.flip_h = false
+			if sign($Position2D.position.x) == -1:
+				$Position2D.position.x *= -1
+				
+		
 	if Input.is_action_just_pressed("jump"):
 		if on_ground == true:
 			velocity.y = jump
@@ -38,36 +60,55 @@ func _physics_process(delta):
 			
 	if Input.is_action_just_pressed("shoot"):
 		var bullet = Shoot.instance()
+		if sign($Position2D.position.x) == 1:
+			print (true)
+			bullet.set_shooting_direction(1)
+		else:
+			bullet.set_shooting_direction(-1)
+			print(false)
 		bullet.global_position = self.global_position
 		bullet.velocity = get_local_mouse_position().normalized()
 		get_node(BulletContainerPath).add_child(bullet)
 		bullet.position = $Position2D.global_position
+		$AnimatedSprite.play("Shoot")
 	
 	#Added 
-	if Input.is_action_pressed ("pickup"):
-		if self.BagPickup != null:
-			self.BagPickup = null
-		else:
-			for i in get_slide_count():
-				var collision = get_slide_collision(i)
-				if collision.collider.name.begins_with("Bag"):
-					self.BagPickup = collision.collider
-				self.BagPickup
-		
-	on_ground = is_on_floor()
+#	if Input.is_action_pressed ("pickup"):
+#		if self.BagPickup != null:
+#			self.BagPickup = null
+#		else:
+#			for i in get_slide_count():
+#				var collision = get_slide_collision(i)
+#				if collision.collider.name.begins_with("Bag"):
+#					self.BagPickup = collision.collider
+#				self.BagPickup
+#
+
+#		if self.BagDrop != null:
+#			self.BagDrop = null
+#		else:
+#			for i in get_slide_count():
+#				var collision = get_slide_collision(i)
+#				if collision.collider.name.begins_with("Bag"):
+#					self.BagDrop = collision.collider
+#			self.BagDrop
+#
 		
 	velocity.y += gravity
+	#on_ground = is_on_floor()
+	if is_on_floor():
+		on_ground = true
+	else:
+		on_ground = false
+		if velocity.y < 0:
+			$AnimatedSprite.play("jump")
+		else:
+			$AnimatedSprite.play("Fall")
+			
 	velocity = move_and_slide(velocity, Floor)
 	
-	match int(sign(get_local_mouse_position().x)):
-		-1:
-			$AnimationPlayer.play("IdleLeft")
-			pass
-		1:
-			$AnimationPlayer.play("IdleRight")
-			pass
 
-
+	
 
 	
 	

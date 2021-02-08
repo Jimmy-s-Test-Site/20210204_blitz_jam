@@ -1,87 +1,61 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Aubrie/Player.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 
+[sub_resource type="SpriteFrames" id=8]
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "Run",
+"speed": 12.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "Fall",
+"speed": 0.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": false,
+"name": "Jump",
+"speed": 0.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": false,
+"name": "Idle",
+"speed": 0.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": false,
+"name": "Shoot",
+"speed": 12.0
+} ]
+
 [sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 29.7173, 41.7842 )
-
-[sub_resource type="Animation" id=6]
-resource_name = "IdleLeft"
-tracks/0/type = "value"
-tracks/0/path = NodePath("Position2D:rotation_degrees")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0.0 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Position2D:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( -34, 0 ) ]
-}
-
-[sub_resource type="Animation" id=7]
-resource_name = "IdleRight"
-tracks/0/type = "value"
-tracks/0/path = NodePath("Position2D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 34, 0 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Position2D:rotation_degrees")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0.0 ]
-}
+extents = Vector2( 28.1346, 41.7842 )
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 1 )
 jump = -450
 
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( -1.06065, 1.06067 )
+scale = Vector2( 0.926407, 1.3274 )
+frames = SubResource( 8 )
+animation = "Fall"
+playing = true
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -1.41422, 0 )
 shape = SubResource( 5 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 0.707123, 2.12132 )
 current = true
 zoom = Vector2( 0.5, 0.5 )
 
-[node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 1.02673, 1.30329 )
-texture = ExtResource( 2 )
-flip_h = true
-
 [node name="Position2D" type="Position2D" parent="."]
-position = Vector2( -34, 0 )
+position = Vector2( 42.7047, 0.0771151 )
 __meta__ = {
 "_gizmo_extents_": 39.1
 }
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/IdleLeft = SubResource( 6 )
-anims/IdleRight = SubResource( 7 )
