@@ -17,6 +17,7 @@ export (NodePath) var BulletContainerPath
 var velocity = Vector2()
 var on_ground = false
 var is_attacking = false
+var can_shoot = false
 #var BagPickup = null
 #var BagDrop = null
 
@@ -26,6 +27,8 @@ var is_attacking = false
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
+	if Input.is_action_just_pressed("shoot"):
+		self.can_shoot = true
 	if Input.is_action_pressed("right"): 
 		velocity.x = speed
 		$AnimatedSprite.play("Run")
@@ -40,6 +43,23 @@ func _physics_process(delta):
 #		$AnimatedSprite.flip_h = true
 #		if sign($Position2D.position.x) == 1:
 #			$Position2D.position.x *= -1
+	
+	elif self.can_shoot == true:
+		if Input.is_action_just_pressed("shoot"):
+			var bullet = Shoot.instance()
+			if sign($Position2D.position.x) == 1:
+				print (true)
+				bullet.set_shooting_direction(1)
+			else:
+				bullet.set_shooting_direction(-1)
+				print(false)
+			bullet.global_position = self.global_position
+			bullet.velocity = get_local_mouse_position().normalized()
+			get_node(BulletContainerPath).add_child(bullet)
+			bullet.position = $Position2D.global_position
+		$AnimatedSprite.play("Shoot")
+		$AnimatedSprite2.play("Shoot")
+	
 	else:
 		velocity.x =0 
 		if on_ground == true:
@@ -64,21 +84,6 @@ func _physics_process(delta):
 			velocity.y = jump
 			on_ground = false
 			
-	if Input.is_action_just_pressed("shoot"):
-		var bullet = Shoot.instance()
-		if sign($Position2D.position.x) == 1:
-			print (true)
-			bullet.set_shooting_direction(1)
-		else:
-			bullet.set_shooting_direction(-1)
-			print(false)
-		bullet.global_position = self.global_position
-		bullet.velocity = get_local_mouse_position().normalized()
-		get_node(BulletContainerPath).add_child(bullet)
-		bullet.position = $Position2D.global_position
-		$AnimatedSprite.play("Shoot")
-		$AnimatedSprite2.play("Shoot")
-	
 	#Added 
 #	if Input.is_action_pressed ("pickup"):
 #		if self.BagPickup != null:
@@ -115,11 +120,7 @@ func _physics_process(delta):
 			$AnimatedSprite2.play("Fall")
 	velocity = move_and_slide(velocity, Floor)
 	
-
-	
-
-	
-	
-
-
-
+func _on_AnimatedSprite2_animation_finished():
+	pass # Replace with function body.
+	if $AnimatedSprite2.animation == "Shoot":
+		self.can_shoot = false

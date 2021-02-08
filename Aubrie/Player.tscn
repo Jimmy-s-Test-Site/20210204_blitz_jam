@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://Aubrie/Player.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/GDevelop-2D-Shooter-Platformer-Example/dude_0000_player-jump1.png" type="Texture" id=2]
@@ -17,7 +17,6 @@
 [ext_resource path="res://Sprites/GDevelop-2D-Shooter-Platformer-Example/dude_0002_player-shot3.png" type="Texture" id=15]
 [ext_resource path="res://Sprites/GDevelop-2D-Shooter-Platformer-Example/weapon_0001_gun-idle2.png" type="Texture" id=16]
 [ext_resource path="res://Sprites/GDevelop-2D-Shooter-Platformer-Example/weapon_0003_dun-shot-03-04.png" type="Texture" id=17]
-[ext_resource path="res://Sprites/GDevelop-2D-Shooter-Platformer-Example/weapon_0001_dun-shot-03-02.png" type="Texture" id=18]
 [ext_resource path="res://Sprites/GDevelop-2D-Shooter-Platformer-Example/weapon_0002_gun-idle3.png" type="Texture" id=19]
 [ext_resource path="res://Sprites/GDevelop-2D-Shooter-Platformer-Example/weapon_0000_gun-walk1.png" type="Texture" id=20]
 [ext_resource path="res://Sprites/GDevelop-2D-Shooter-Platformer-Example/weapon_0003_gun-walk4.png" type="Texture" id=21]
@@ -33,37 +32,9 @@
 [ext_resource path="res://Sprites/GDevelop-2D-Shooter-Platformer-Example/weapon_0002_gun-walk3.png" type="Texture" id=31]
 [ext_resource path="res://Sprites/GDevelop-2D-Shooter-Platformer-Example/weapon_0002_gun-shot3.png" type="Texture" id=32]
 [ext_resource path="res://Sprites/GDevelop-2D-Shooter-Platformer-Example/dude_0003_player-shot4.png" type="Texture" id=33]
-[ext_resource path="res://Sprites/GDevelop-2D-Shooter-Platformer-Example/weapon_0001_gun-shot02.png" type="Texture" id=34]
 [ext_resource path="res://Sprites/GDevelop-2D-Shooter-Platformer-Example/weapon_0004_gun-walk5.png" type="Texture" id=35]
 [ext_resource path="res://Sprites/GDevelop-2D-Shooter-Platformer-Example/weapon_0002_gun-shot03.png" type="Texture" id=36]
-
-[sub_resource type="SpriteFrames" id=9]
-animations = [ {
-"frames": [ ExtResource( 20 ), ExtResource( 26 ), ExtResource( 31 ), ExtResource( 21 ), ExtResource( 35 ) ],
-"loop": true,
-"name": "Run",
-"speed": 20.0
-}, {
-"frames": [ ExtResource( 24 ) ],
-"loop": true,
-"name": "Fall",
-"speed": 0.0
-}, {
-"frames": [ ExtResource( 22 ) ],
-"loop": true,
-"name": "Jump",
-"speed": 0.0
-}, {
-"frames": [ ExtResource( 24 ), ExtResource( 16 ), ExtResource( 19 ), ExtResource( 28 ), ExtResource( 30 ) ],
-"loop": true,
-"name": "Idle",
-"speed": 15.0
-}, {
-"frames": [ ExtResource( 18 ), ExtResource( 34 ), ExtResource( 23 ), ExtResource( 27 ), ExtResource( 32 ), ExtResource( 17 ), ExtResource( 36 ), ExtResource( 29 ) ],
-"loop": true,
-"name": "Shoot",
-"speed": 20.0
-} ]
+[ext_resource path="res://Sprites/GDevelop-2D-Shooter-Platformer-Example/weapon_0000_gun-shot1.png" type="Texture" id=37]
 
 [sub_resource type="SpriteFrames" id=8]
 animations = [ {
@@ -93,6 +64,34 @@ animations = [ {
 "speed": 12.0
 } ]
 
+[sub_resource type="SpriteFrames" id=9]
+animations = [ {
+"frames": [ ExtResource( 20 ), ExtResource( 26 ), ExtResource( 31 ), ExtResource( 21 ), ExtResource( 35 ) ],
+"loop": true,
+"name": "Run",
+"speed": 20.0
+}, {
+"frames": [ ExtResource( 24 ) ],
+"loop": true,
+"name": "Fall",
+"speed": 0.0
+}, {
+"frames": [ ExtResource( 22 ) ],
+"loop": true,
+"name": "Jump",
+"speed": 0.0
+}, {
+"frames": [ ExtResource( 24 ), ExtResource( 16 ), ExtResource( 19 ), ExtResource( 28 ), ExtResource( 30 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 15.0
+}, {
+"frames": [ ExtResource( 37 ), ExtResource( 23 ), ExtResource( 23 ), ExtResource( 27 ), ExtResource( 27 ), ExtResource( 27 ), ExtResource( 32 ), ExtResource( 23 ), ExtResource( 17 ), ExtResource( 36 ), ExtResource( 29 ) ],
+"loop": true,
+"name": "Shoot",
+"speed": 50.0
+} ]
+
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 31.9023, 61.1391 )
 
@@ -100,33 +99,34 @@ extents = Vector2( 31.9023, 61.1391 )
 script = ExtResource( 1 )
 jump = -450
 
-[node name="AnimatedSprite2" type="AnimatedSprite" parent="."]
-position = Vector2( -1.06065, 3.30812 )
-scale = Vector2( 0.926407, 1.37734 )
-frames = SubResource( 9 )
-animation = "Shoot"
-frame = 7
-playing = true
-
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( -1.06065, 3.30812 )
 scale = Vector2( 0.926407, 1.37734 )
 frames = SubResource( 8 )
 animation = "Idle"
-frame = 3
+frame = 2
+playing = true
+
+[node name="AnimatedSprite2" type="AnimatedSprite" parent="."]
+position = Vector2( -2.18439, 6.67931 )
+scale = Vector2( 0.734957, 1.41896 )
+frames = SubResource( 9 )
+animation = "Shoot"
+frame = 7
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -4.41086, 5.24406 )
+position = Vector2( -3.66171, 8.24068 )
 shape = SubResource( 5 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 0.707123, 2.12132 )
+position = Vector2( -0.0420227, 6.61626 )
 current = true
-zoom = Vector2( 0.5, 0.5 )
+zoom = Vector2( 0.7, 0.7 )
 
 [node name="Position2D" type="Position2D" parent="."]
-position = Vector2( 48.6979, 24.7992 )
+position = Vector2( 46.3087, 21.0319 )
 __meta__ = {
 "_gizmo_extents_": 39.1
 }
+[connection signal="animation_finished" from="AnimatedSprite2" to="." method="_on_AnimatedSprite2_animation_finished"]
