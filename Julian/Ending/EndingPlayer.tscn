@@ -1,0 +1,15 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Julian/Ending/EndingPlayer.gd" type="Script" id=1]
+[ext_resource path="res://Julian/Ending/Ending2.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Julian/Ending/Ending3.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Julian/Ending/Ending1.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Julian/Ending/Ending4.tscn" type="PackedScene" id=5]
+
+[node name="EndingPlayer" type="Node2D"]
+script = ExtResource( 1 )
+accepted = ExtResource( 4 )
+reset = ExtResource( 2 )
+join = ExtResource( 3 )
+recycling = ExtResource( 5 )
+playing = 2
