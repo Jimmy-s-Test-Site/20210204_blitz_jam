@@ -7,7 +7,7 @@ signal goto_ending
 
 const room := preload("res://Julian/Rooms/Rooms.gd")
 
-enum SCENES {
+enum ENDING_SCENES {
 	ACCEPTED,
 	RESET,
 	JOIN,
@@ -32,4 +32,3 @@ func exit(door : Area2D) -> void:
 	
 	if door.uses_ending:
 		self.emit_signal("goto_ending", door.ending_destination)
-		

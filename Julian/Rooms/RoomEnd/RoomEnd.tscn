@@ -22,10 +22,9 @@ position = Vector2( 440.46, 509.7 )
 
 [node name="DoorA" parent="DoorContainer" instance=ExtResource( 2 )]
 position = Vector2( 503.431, -380.57 )
-uses_ending = true
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 83.7488, 99.1016 )
+position = Vector2( 83.7488, 93.1084 )
 speed = 300
 jump = -400
 BulletContainerPath = NodePath("../../Room2/BulletContainer")

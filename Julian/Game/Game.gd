@@ -54,6 +54,9 @@ func add_room(room_name : int):
 	if not room_scene.is_connected("add_points", self, "add_points"):
 		room_scene.connect("add_points", self, "add_points")
 	
+	if room_name == self.room.Names.RoomEnd:
+		room_scene.total_points = self.total_points
+	
 	self.add_child(room_scene)
 
 func add_points(points : int):
