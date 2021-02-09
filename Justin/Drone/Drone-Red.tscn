@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Justin/Drone/Drone.gd" type="Script" id=1]
-[ext_resource path="res://Sprites/Drone-Green.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Drone-Red.png" type="Texture" id=2]
 [ext_resource path="res://Justin/Drone/Projectile.tscn" type="PackedScene" id=3]
 
 [sub_resource type="Curve2D" id=1]
@@ -9,33 +9,31 @@ _data = {
 "points": PoolVector2Array(  )
 }
 
-[sub_resource type="CapsuleShape2D" id=2]
-radius = 31.8572
-height = 24.6942
-
 [sub_resource type="CircleShape2D" id=3]
-radius = 16.262
+radius = 3.02323
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 21.0898
+height = 0.0
 
 [node name="Drone" type="KinematicBody2D"]
 script = ExtResource( 1 )
 DronePath = SubResource( 1 )
-DroneSpeed = 450
+DroneSpeed = 25
 Projectile = ExtResource( 3 )
 Energy = 3
+Hostility = 1
 
 [node name="Drone_Sprite" type="Sprite" parent="."]
+scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
-[node name="DroneCollider2D" type="CollisionShape2D" parent="."]
-rotation = 1.5708
-shape = SubResource( 2 )
-
 [node name="bullet_Timer" type="Timer" parent="."]
 
 [node name="SpawnRadius" type="Position2D" parent="."]
-position = Vector2( 55, 0 )
+position = Vector2( 25, 0 )
 
 [node name="DroneVision" type="Area2D" parent="."]
 
@@ -44,6 +42,13 @@ modulate = Color( 0.815686, 0.815686, 0.815686, 1 )
 show_behind_parent = true
 scale = Vector2( 30, 30 )
 shape = SubResource( 3 )
+
+[node name="DroneCollider" type="Area2D" parent="."]
+
+[node name="DroneCollider2D" type="CollisionShape2D" parent="DroneCollider"]
+rotation = 1.5708
+shape = SubResource( 2 )
 [connection signal="timeout" from="bullet_Timer" to="." method="_on_bullet_Timer_timeout"]
 [connection signal="body_entered" from="DroneVision" to="." method="_on_DroneVision_body_entered"]
 [connection signal="body_exited" from="DroneVision" to="." method="_on_DroneVision_body_exited"]
+[connection signal="body_entered" from="DroneCollider" to="." method="_on_DroneCollider_body_entered"]

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Drone.png-c1891ce33bd3e03ecea7927b10b60a95.stex"
+path="res://.import/Game Jam Start Screen.png-062566f7899dc37ea4c20c571ad8480c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Drone.png"
-dest_files=[ "res://.import/Drone.png-c1891ce33bd3e03ecea7927b10b60a95.stex" ]
+source_file="res://Sprites/Game Jam Start Screen.png"
+dest_files=[ "res://.import/Game Jam Start Screen.png-062566f7899dc37ea4c20c571ad8480c.stex" ]
 
 [params]
 

@@ -1,17 +1,21 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Sprites/temp mannequin.PNG" type="Texture" id=1]
+[ext_resource path="res://Sprites/1 Pink_Monster/Pink_Monster.png" type="Texture" id=1]
 [ext_resource path="res://Justin/Mannequin/Mannequin.gd" type="Script" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 20.336
+radius = 16.9479
 
-[node name="Mannequin_Sprite" type="Sprite"]
+[node name="Mannequin" type="Sprite"]
 texture = ExtResource( 1 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Mannequin_Collison_Shape" type="CollisionShape2D" parent="."]
+[node name="MannequinArea" type="Area2D" parent="."]
+
+[node name="Mannequin_Collison_Shape" type="CollisionShape2D" parent="MannequinArea"]
 shape = SubResource( 1 )
+[connection signal="area_entered" from="MannequinArea" to="." method="_on_MannequinArea_area_entered"]
+[connection signal="body_entered" from="MannequinArea" to="." method="_on_MannequinArea_body_entered"]
