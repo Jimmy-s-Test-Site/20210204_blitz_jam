@@ -4,6 +4,13 @@ signal pressed_enter
 
 const room := preload("res://Julian/Rooms/Rooms.gd")
 
+enum ENDING_SCENES {
+	ACCEPTED,
+	RESET,
+	JOIN,
+	RECYCLING
+}
+
 export(float) var fade_time
 
 var total_points : int = 0
@@ -41,13 +48,16 @@ func add_room(room_name : int):
 	if not room_scene.is_connected("goto_room", self, "load_room"):
 		room_scene.connect("goto_room", self, "load_room")
 	
+	if not room_scene.is_connected("goto_ending", self, "goto_ending"):
+		room_scene.connect("goto_ending", self, "goto_ending")
+	
 	if not room_scene.is_connected("add_points", self, "add_points"):
 		room_scene.connect("add_points", self, "add_points")
-	
-	if room_name == self.room.Names.RoomEnd:
-		self.emit_signal("pressed_enter", self.total_points)
 	
 	self.add_child(room_scene)
 
 func add_points(points : int):
 	self.total_points += points
+
+func goto_ending(ending):
+	self.emit_signal("pressed_enter", self.total_points, ending)

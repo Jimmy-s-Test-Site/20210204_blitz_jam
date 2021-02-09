@@ -29,3 +29,7 @@ func on_Door_body_entered(door : Area2D) -> void:
 func exit(door : Area2D) -> void:
 	self.emit_signal("add_points", door.points)
 	self.emit_signal("goto_room", door.destination)
+	
+	if door.uses_ending:
+		self.emit_signal("goto_ending", door.ending_destination)
+		
