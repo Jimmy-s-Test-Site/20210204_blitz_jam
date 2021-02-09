@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Justin/Drone/Drone-Red.tscn" type="PackedScene" id=2]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( -81.4607, 2.37841, 81.4607, -2.37841, -0.985107, -84.6262, 32.1086, -48.1629, -32.1086, 48.1629, 69.1781, 52.1326, 29.7302, 64.8118, -29.7302, -64.8118, -74.716, 40.2405, -70.1632, -4.16222, 70.1632, 4.16222, -0.985107, -84.6262 )
+}
+
+[node name="Drone1" type="Node2D"]
+position = Vector2( 835.154, 456.898 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource( 1 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2( -0.985107, -84.6262 )
+rotate = false
+
+[node name="Drone" parent="Path2D/PathFollow2D" instance=ExtResource( 2 )]
