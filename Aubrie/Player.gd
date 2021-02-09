@@ -8,7 +8,7 @@ const Shoot = preload("res://Aubrie/Player Shooting.tscn")
 #Added for pickup
 #const PickUp = preload ("res://Aubrie/Bag.tscn")
 
-export (int) var speed = 175
+export (int) var speed = 200
 export (int) var gravity = 10
 export (int) var jump = -300
 export (NodePath) var BulletContainerPath
@@ -21,10 +21,6 @@ var can_shoot = false
 #var BagPickup = null
 #var BagDrop = null
 
-#func _ready():
-#	$AnimatedSprite.play("Run")
-	
-	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	if Input.is_action_just_pressed("shoot"):
@@ -60,6 +56,12 @@ func _physics_process(delta):
 		$AnimatedSprite.play("Shoot")
 		$AnimatedSprite2.play("Shoot")
 	
+	#push/pull
+#	elif Input.is_action_just_pressed("pull"):
+#		if is_on_wall():
+#
+#		collision.collider.add_force(collision.position, Vector2(speed * 20,0))
+
 	else:
 		velocity.x =0 
 		if on_ground == true:
