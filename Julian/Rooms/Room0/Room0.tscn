@@ -69,9 +69,30 @@ texture = ExtResource( 7 )
 region_enabled = true
 region_rect = Rect2( 144.511, 175.862, 48.2342, 16.4655 )
 
-[node name="Basic Tiles Only3" type="Sprite" parent="."]
-position = Vector2( 956, 560 )
+[node name="Basic Tiles Only4" type="Sprite" parent="."]
+position = Vector2( 321, 562 )
 scale = Vector2( 2.85417, 2.0625 )
+texture = ExtResource( 7 )
+region_enabled = true
+region_rect = Rect2( 144.511, 175.862, 48.2342, 16.4655 )
+
+[node name="Basic Tiles Only5" type="Sprite" parent="."]
+position = Vector2( 198, 562 )
+scale = Vector2( 2.85417, 2.0625 )
+texture = ExtResource( 7 )
+region_enabled = true
+region_rect = Rect2( 144.511, 175.862, 48.2342, 16.4655 )
+
+[node name="Basic Tiles Only3" type="Sprite" parent="."]
+position = Vector2( 942, 560 )
+scale = Vector2( 2.30208, 2.0625 )
+texture = ExtResource( 7 )
+region_enabled = true
+region_rect = Rect2( 144.511, 175.862, 48.2342, 16.4655 )
+
+[node name="Basic Tiles Only6" type="Sprite" parent="."]
+position = Vector2( 86.0001, 562 )
+scale = Vector2( 2.30208, 2.0625 )
 texture = ExtResource( 7 )
 region_enabled = true
 region_rect = Rect2( 144.511, 175.862, 48.2342, 16.4655 )

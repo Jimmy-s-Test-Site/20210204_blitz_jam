@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://Aubrie/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Julian/Items/Door/Door.tscn" type="PackedScene" id=2]
@@ -31,6 +31,7 @@
 [ext_resource path="res://Sprites/warped city files/ENVIRONMENT/props/monitorface/monitor-face-1.png" type="Texture" id=29]
 [ext_resource path="res://Sprites/warped city files/ENVIRONMENT/props/monitorface/monitor-face-3.png" type="Texture" id=30]
 [ext_resource path="res://Sprites/warped city files/ENVIRONMENT/props/monitorface/monitor-face-2.png" type="Texture" id=31]
+[ext_resource path="res://Justin/Mannequin/Mannequin.tscn" type="PackedScene" id=32]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -222,3 +223,8 @@ curve = SubResource( 7 )
 [node name="PathFollow2D" type="PathFollow2D" parent="Drones/Path2D"]
 
 [node name="MannequinContainer" type="Node2D" parent="."]
+
+[node name="Mannequin" parent="MannequinContainer" instance=ExtResource( 32 )]
+position = Vector2( 1692.11, 375.813 )
+scale = Vector2( 2.10485, 2.41421 )
+flip_h = true
