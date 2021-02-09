@@ -5,15 +5,16 @@ enum MOVEMENT {stationary, path, chase}
 
 export (Curve2D) var DronePath						#The # and location of each Stop on Path
 export (int) var DroneSpeed := 50 					#drone movement speed
-var move_direction = 0 								#movement facing direction
+var move_direction = 0 								#movement facing direction in radians
 export (float) var BulletDelay := 0.7 				#delay before next bullet fires
 export (PackedScene) var Projectile 				#droppable container for projectile scene
 export (NodePath) var ProjectileContainer			#The NODEPATH to the Projectile Container
+export (NodePath) var PlayerNodePath				##The NODEPATH to the Player Container
 export (int) var Energy := 2 						#drone Energy/HP
 export (Vector2) var ShootingAt := Vector2(-1,-1)#was -1 0    #what it's target is. Player/Mannequin/free shooting
 export (BEHAVIOURS) var Hostility = BEHAVIOURS.good	#Tells if drone is good/bad/neutral
 export (MOVEMENT) var Move_Type = MOVEMENT.stationary #Tells type of movement statiionary/path/chase
-export (NodePath) var PlayerNodePath
+
 var target 											#Target to shoot
 
 onready var EnemyToPlayer = self.global_position
@@ -34,7 +35,7 @@ func _physics_process(delta):
 	match Move_Type:
 		MOVEMENT.chase:
 			EnemyToPlayer = self.global_position - self.get_node(PlayerNodePath).global_position
-			position += DroneSpeed * ShootingAt * delta * EnemyToPlayer
+			position += (DroneSpeed*.5) * ShootingAt * delta * EnemyToPlayer
 		MOVEMENT.path:
 			MovementLoop(delta) #call movement loop every frame
 		MOVEMENT.stationary:	
@@ -85,3 +86,15 @@ func _on_DroneVision_body_exited(body):
 	if target != null:
 		if target.name == body.name:
 			target = null
+
+func _on_DroneCollider_body_entered(body):
+	var bodyIsPlayer = body.name == "Player"
+	print(body)
+	var bodyIsBullet = body.name == "PlayerShooting" or body.name == "Projectile"
+
+	if bodyIsPlayer:
+		print("Drone -> Player")
+		pass #GO TO GAMEOVER
+	elif bodyIsBullet:
+		print("DRONE HIT")
+		queue_free()
