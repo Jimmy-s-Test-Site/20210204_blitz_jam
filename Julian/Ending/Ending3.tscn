@@ -46,18 +46,3 @@ autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="Continue" type="Label" parent="CanvasLayer"]
-margin_left = 513.57
-margin_top = 480.509
-margin_right = 1239.57
-margin_bottom = 615.509
-rect_scale = Vector2( 0.6, 0.6 )
-custom_fonts/font = SubResource( 1 )
-text = "[ E N T E R ]"
-align = 1
-autowrap = true
-uppercase = true
-__meta__ = {
-"_edit_use_anchors_": false
-}

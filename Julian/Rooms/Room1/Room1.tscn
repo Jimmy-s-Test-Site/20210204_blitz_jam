@@ -15,6 +15,7 @@ bounce = 0.2
 [node name="Room1" type="Node2D"]
 script = ExtResource( 3 )
 door_container_path = NodePath("DoorContainer")
+mannequin_container_path = NodePath("MannequinContainer")
 
 [node name="cyberpunk-street" type="Sprite" parent="."]
 position = Vector2( 511.342, 304.411 )
@@ -56,4 +57,4 @@ physics_material_override = SubResource( 1 )
 [node name="MannequinContainer" type="Node2D" parent="."]
 
 [node name="Mannequin" parent="MannequinContainer" instance=ExtResource( 7 )]
-position = Vector2( 408.676, 449.039 )
+position = Vector2( 399.757, 500.175 )

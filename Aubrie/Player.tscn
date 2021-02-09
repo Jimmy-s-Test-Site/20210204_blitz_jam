@@ -38,25 +38,25 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 9 ) ],
-"loop": true,
-"name": "Fall",
-"speed": 0.0
-}, {
 "frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ],
 "loop": true,
 "name": "Run",
 "speed": 20.0
+}, {
+"frames": [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 12 ), ExtResource( 11 ), ExtResource( 13 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 15.0
 }, {
 "frames": [ ExtResource( 2 ) ],
 "loop": false,
 "name": "Jump",
 "speed": 0.0
 }, {
-"frames": [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 12 ), ExtResource( 11 ), ExtResource( 13 ) ],
+"frames": [ ExtResource( 9 ) ],
 "loop": true,
-"name": "Idle",
-"speed": 15.0
+"name": "Fall",
+"speed": 0.0
 }, {
 "frames": [ ExtResource( 14 ), ExtResource( 3 ), ExtResource( 15 ), ExtResource( 33 ), ExtResource( 25 ) ],
 "loop": true,
@@ -66,25 +66,25 @@ animations = [ {
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 24 ) ],
-"loop": true,
-"name": "Fall",
-"speed": 0.0
-}, {
 "frames": [ ExtResource( 20 ), ExtResource( 26 ), ExtResource( 31 ), ExtResource( 21 ), ExtResource( 35 ) ],
 "loop": true,
 "name": "Run",
 "speed": 20.0
+}, {
+"frames": [ ExtResource( 24 ), ExtResource( 16 ), ExtResource( 19 ), ExtResource( 28 ), ExtResource( 30 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 15.0
 }, {
 "frames": [ ExtResource( 22 ) ],
 "loop": true,
 "name": "Jump",
 "speed": 0.0
 }, {
-"frames": [ ExtResource( 24 ), ExtResource( 16 ), ExtResource( 19 ), ExtResource( 28 ), ExtResource( 30 ) ],
+"frames": [ ExtResource( 24 ) ],
 "loop": true,
-"name": "Idle",
-"speed": 15.0
+"name": "Fall",
+"speed": 0.0
 }, {
 "frames": [ ExtResource( 37 ), ExtResource( 23 ), ExtResource( 23 ), ExtResource( 27 ), ExtResource( 27 ), ExtResource( 27 ), ExtResource( 32 ), ExtResource( 23 ), ExtResource( 17 ), ExtResource( 36 ), ExtResource( 29 ) ],
 "loop": true,
@@ -107,7 +107,6 @@ position = Vector2( -1.06065, 3.30812 )
 scale = Vector2( 0.926407, 1.37734 )
 frames = SubResource( 1 )
 animation = "Idle"
-frame = 2
 playing = true
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="."]
@@ -115,6 +114,7 @@ position = Vector2( -2.18439, 6.67931 )
 scale = Vector2( 0.734957, 1.41896 )
 frames = SubResource( 2 )
 animation = "Shoot"
+frame = 10
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -124,7 +124,7 @@ shape = SubResource( 3 )
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( -0.0420227, 6.61626 )
 current = true
-zoom = Vector2( 0.5, 0.5 )
+zoom = Vector2( 0.9, 0.9 )
 
 [node name="Position2D" type="Position2D" parent="."]
 position = Vector2( 35.8087, 22.0319 )

@@ -10,6 +10,7 @@
 [node name="Room0" type="Node2D"]
 script = ExtResource( 3 )
 door_container_path = NodePath("DoorContainer")
+mannequin_container_path = NodePath("MannequinContainer")
 
 [node name="cyberpunk-street" type="Sprite" parent="."]
 position = Vector2( 514.023, 299.591 )
@@ -50,3 +51,5 @@ jump = -400
 BulletContainerPath = NodePath("../ProjectileContainer")
 
 [node name="ProjectileContainer" type="Node2D" parent="."]
+
+[node name="MannequinContainer" type="Node2D" parent="."]
