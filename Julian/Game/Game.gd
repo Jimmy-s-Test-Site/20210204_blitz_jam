@@ -61,6 +61,7 @@ func add_room(room_name : int):
 
 func add_points(points : int):
 	self.total_points += points
+	print(self.total_points)
 
 func goto_ending(ending):
 	self.emit_signal("pressed_enter", self.total_points, ending)
