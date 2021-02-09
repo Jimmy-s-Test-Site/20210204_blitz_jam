@@ -89,8 +89,7 @@ func _on_DroneVision_body_exited(body):
 
 func _on_DroneCollider_body_entered(body):
 	var bodyIsPlayer = body.name == "Player"
-	print(body)
-	var bodyIsBullet = body.name == "PlayerShooting" or body.name == "Projectile"
+	var bodyIsBullet = body.name.begins_with("PlayerShooting") or body.name.begins_with("Projectile")
 
 	if bodyIsPlayer:
 		print("Drone -> Player")
