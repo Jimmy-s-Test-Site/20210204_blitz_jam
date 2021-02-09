@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/beam.ogg-84095d6154b0a574c2a23e35327cc088.oggstr"
+
+[deps]
+
+source_file="res://Julian/Rooms/Room3/warped city files/demo/assets/sounds/beam.ogg"
+dest_files=[ "res://.import/beam.ogg-84095d6154b0a574c2a23e35327cc088.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
