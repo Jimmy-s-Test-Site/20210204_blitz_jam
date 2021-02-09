@@ -145,7 +145,6 @@ position = Vector2( 700.044, 57.1465 )
 scale = Vector2( 1.97008, 3.93059 )
 frames = SubResource( 4 )
 animation = "Sign6"
-frame = 2
 playing = true
 
 [node name="banner-arrow" type="Sprite" parent="Background"]
