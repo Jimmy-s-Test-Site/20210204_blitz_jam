@@ -53,4 +53,6 @@ func on_scene_pressed_enter(total_score = 0, goto_ending = -1):
 		PLAY_OPTIONS.GAME:
 			self.play(PLAY_OPTIONS.ENDING, goto_ending)
 		PLAY_OPTIONS.ENDING:
-			self.play(PLAY_OPTIONS.GAME)
+			for child in self.get_children():
+				if child.playing == ENDING_SCENES.RESET:
+					self.play(PLAY_OPTIONS.GAME)

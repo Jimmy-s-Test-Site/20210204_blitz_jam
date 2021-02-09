@@ -1,5 +1,7 @@
 extends Node2D
 
+signal pressed_enter
+
 enum SCENES {
 	ACCEPTED,
 	RESET,
@@ -19,7 +21,12 @@ func _ready():
 
 func play(option):
 	for child in self.get_children():
+		if child.is_connected("pressed_enter", self, "on_ending_pressed_enter"):
+			child.disconnect("pressed_enter", self, "on_ending_pressed_enter")
+		
 		child.queue_free()
+	
+	self.playing = option
 	
 	var scene = null
 	match option:
@@ -32,4 +39,12 @@ func play(option):
 		SCENES.RECYCLING:
 			scene = self.recycling
 	
-	self.add_child(scene.instance())
+	var scene_instance : Object = scene.instance()
+	
+	if not scene_instance.is_connected("pressed_enter", self, "on_ending_pressed_enter"):
+		scene_instance.connect("pressed_enter", self, "on_ending_pressed_enter")
+	
+	self.add_child(scene_instance)
+
+func on_ending_pressed_enter():
+	self.emit_signal("pressed_enter")
