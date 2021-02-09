@@ -5,7 +5,7 @@ const Shoot = preload("res://Aubrie/Player Shooting.tscn")
 
 export (int) var speed = 200
 export (int) var gravity = 10
-export (int) var jump = -300
+export (int) var jump = -450
 export (NodePath) var BulletContainerPath
 
 var velocity = Vector2()
