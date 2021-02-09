@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Julian/Items/Block/Block.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Basic Tiles Only.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 128, 128 )
@@ -14,6 +15,13 @@ script = ExtResource( 1 )
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 4, 4 )
 texture = ExtResource( 2 )
+
+[node name="Basic Tiles Only" type="Sprite" parent="."]
+position = Vector2( -1.00001, 1.50001 )
+scale = Vector2( 4.0625, 4.07937 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 239.848, 624.565, 64.2133, 63.9755 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
