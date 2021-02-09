@@ -4,29 +4,11 @@
 [ext_resource path="res://Julian/Items/Door/Door.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Julian/Tilesets/room_env.tres" type="TileSet" id=3]
 [ext_resource path="res://Julian/Rooms/Room3/Room3.gd" type="Script" id=4]
-[ext_resource path="res://Sprites/warped city files/ENVIRONMENT/props/banner-big/banner-big-1.png" type="Texture" id=5]
-[ext_resource path="res://Sprites/warped city files/ENVIRONMENT/props/banner-neon/banner-neon-1.png" type="Texture" id=6]
-[ext_resource path="res://Sprites/warped city files/ENVIRONMENT/background/near-buildings-bg.png" type="Texture" id=7]
-[ext_resource path="res://Sprites/warped city files/ENVIRONMENT/props/banner-big/banner-big-2.png" type="Texture" id=8]
-[ext_resource path="res://Sprites/warped city files/ENVIRONMENT/props/banner-big/banner-big-3.png" type="Texture" id=9]
-[ext_resource path="res://Sprites/warped city files/ENVIRONMENT/props/banner-neon/banner-neon-2.png" type="Texture" id=10]
-[ext_resource path="res://Sprites/warped city files/ENVIRONMENT/props/banner-neon/banner-neon-4.png" type="Texture" id=11]
+[ext_resource path="res://Justin/RoomTesting/BG Scene.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Sprites/warped city files/ENVIRONMENT/props/banner-scroll/banner-scroll-1.png" type="Texture" id=12]
 [ext_resource path="res://Sprites/warped city files/ENVIRONMENT/props/banner-scroll/banner-scroll-2.png" type="Texture" id=13]
-[ext_resource path="res://Sprites/warped city files/ENVIRONMENT/props/banner-big/banner-big-4.png" type="Texture" id=14]
-[ext_resource path="res://Sprites/warped city files/ENVIRONMENT/props/banner-neon/banner-neon-3.png" type="Texture" id=15]
 [ext_resource path="res://Sprites/warped city files/ENVIRONMENT/props/banner-scroll/banner-scroll-3.png" type="Texture" id=16]
 [ext_resource path="res://Sprites/warped city files/ENVIRONMENT/props/banner-scroll/banner-scroll-4.png" type="Texture" id=17]
-[ext_resource path="res://Sprites/warped city files/ENVIRONMENT/background/skyline-a.png" type="Texture" id=18]
-[ext_resource path="res://Sprites/warped city files/ENVIRONMENT/props/banner-sushi/banner-sushi-2.png" type="Texture" id=19]
-[ext_resource path="res://Sprites/warped city files/ENVIRONMENT/background/skyline-b.png" type="Texture" id=20]
-[ext_resource path="res://Sprites/warped city files/ENVIRONMENT/props/banner-arrow.png" type="Texture" id=21]
-[ext_resource path="res://Sprites/warped city files/ENVIRONMENT/props/banner-sushi/banner-sushi-1.png" type="Texture" id=22]
-[ext_resource path="res://Sprites/warped city files/ENVIRONMENT/props/banner-side/banner-side-1.png" type="Texture" id=23]
-[ext_resource path="res://Sprites/warped city files/ENVIRONMENT/props/banner-side/banner-side-2.png" type="Texture" id=24]
-[ext_resource path="res://Sprites/warped city files/ENVIRONMENT/props/banner-side/banner-side-3.png" type="Texture" id=25]
-[ext_resource path="res://Sprites/warped city files/ENVIRONMENT/props/banner-side/banner-side-4.png" type="Texture" id=26]
-[ext_resource path="res://Sprites/warped city files/ENVIRONMENT/props/banner-sushi/banner-sushi-3.png" type="Texture" id=27]
 [ext_resource path="res://Sprites/warped city files/ENVIRONMENT/props/monitorface/monitor-face-4.png" type="Texture" id=28]
 [ext_resource path="res://Sprites/warped city files/ENVIRONMENT/props/monitorface/monitor-face-1.png" type="Texture" id=29]
 [ext_resource path="res://Sprites/warped city files/ENVIRONMENT/props/monitorface/monitor-face-3.png" type="Texture" id=30]
@@ -34,38 +16,6 @@
 [ext_resource path="res://Justin/Mannequin/Mannequin.tscn" type="PackedScene" id=32]
 [ext_resource path="res://Justin/Drone/Drone-Red.tscn" type="PackedScene" id=33]
 [ext_resource path="res://Justin/Drone/Drone-Green.tscn" type="PackedScene" id=34]
-
-[sub_resource type="SpriteFrames" id=1]
-animations = [ {
-"frames": [ ExtResource( 6 ), ExtResource( 10 ), ExtResource( 15 ), ExtResource( 11 ) ],
-"loop": true,
-"name": "Sign2",
-"speed": 10.0
-} ]
-
-[sub_resource type="SpriteFrames" id=2]
-animations = [ {
-"frames": [ ExtResource( 5 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 14 ) ],
-"loop": true,
-"name": "Sign1",
-"speed": 10.0
-} ]
-
-[sub_resource type="SpriteFrames" id=3]
-animations = [ {
-"frames": [ ExtResource( 23 ), ExtResource( 24 ), ExtResource( 26 ), ExtResource( 25 ) ],
-"loop": true,
-"name": "Sign5",
-"speed": 10.0
-} ]
-
-[sub_resource type="SpriteFrames" id=4]
-animations = [ {
-"frames": [ ExtResource( 22 ), ExtResource( 19 ), ExtResource( 27 ) ],
-"loop": true,
-"name": "Sign6",
-"speed": 10.0
-} ]
 
 [sub_resource type="SpriteFrames" id=5]
 animations = [ {
@@ -93,7 +43,7 @@ script = ExtResource( 4 )
 door_container_path = NodePath("DoorContainer")
 mannequin_container_path = NodePath("MannequinContainer")
 
-[node name="Background" type="Node2D" parent="."]
+[node name="Background" parent="." instance=ExtResource( 5 )]
 
 [node name="skyline-a" type="Sprite" parent="Background"]
 position = Vector2( 1722.6, 372.082 )
