@@ -127,7 +127,7 @@ position = Vector2( 1110.82, 96.4139 )
 scale = Vector2( 2.50477, 2.40149 )
 frames = SubResource( 1 )
 animation = "Sign2"
-frame = 2
+frame = 1
 playing = true
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="."]
@@ -135,6 +135,7 @@ position = Vector2( 1646.47, 317.054 )
 scale = Vector2( 2.55243, 4.54274 )
 frames = SubResource( 2 )
 animation = "Sign3"
+frame = 3
 playing = true
 
 [node name="AnimatedSprite4" type="AnimatedSprite" parent="."]
@@ -142,6 +143,7 @@ position = Vector2( 1744.02, 318.177 )
 scale = Vector2( 2.55243, 4.5905 )
 frames = SubResource( 2 )
 animation = "Sign3"
+frame = 3
 playing = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
@@ -149,7 +151,7 @@ position = Vector2( 1870.15, 206.861 )
 scale = Vector2( 1, 1 )
 frames = SubResource( 3 )
 animation = "Sign1"
-frame = 3
+frame = 2
 playing = true
 
 [node name="AnimatedSprite5" type="AnimatedSprite" parent="."]
@@ -157,7 +159,6 @@ position = Vector2( 117.125, 299.488 )
 scale = Vector2( 2.28108, 1.39034 )
 frames = SubResource( 4 )
 animation = "Sign5"
-frame = 2
 playing = true
 
 [node name="AnimatedSprite6" type="AnimatedSprite" parent="."]
@@ -165,6 +166,7 @@ position = Vector2( 700.044, 57.1465 )
 scale = Vector2( 1.97008, 3.93059 )
 frames = SubResource( 5 )
 animation = "Sign6"
+frame = 1
 playing = true
 
 [node name="AnimatedSprite7" type="AnimatedSprite" parent="."]
@@ -172,7 +174,7 @@ position = Vector2( 1949.73, 143.662 )
 scale = Vector2( 4.62835, 4.79212 )
 frames = SubResource( 6 )
 animation = "Face"
-frame = 1
+frame = 3
 playing = true
 
 [node name="DoorContainer" type="Node2D" parent="."]
@@ -186,7 +188,7 @@ position = Vector2( 1857.12, 221.446 )
 destination = 5
 
 [node name="DoorC" parent="DoorContainer" instance=ExtResource( 2 )]
-position = Vector2( 1857.67, 411.908 )
+position = Vector2( 1857.67, 414.029 )
 destination = 4
 
 [node name="Player" parent="." instance=ExtResource( 1 )]

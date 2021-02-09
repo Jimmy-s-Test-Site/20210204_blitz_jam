@@ -35,7 +35,7 @@ position = Vector2( 440.46, 509.7 )
 
 [node name="DoorA" parent="DoorContainer" instance=ExtResource( 4 )]
 position = Vector2( -200.46, 5.29998 )
-destination = 5
+destination = 3
 
 [node name="DoorB" parent="DoorContainer" instance=ExtResource( 4 )]
 position = Vector2( -361.664, -187.231 )
