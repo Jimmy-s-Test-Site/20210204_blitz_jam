@@ -3,8 +3,16 @@ class_name Room
 
 signal goto_room
 signal add_points
+signal goto_ending
 
 const room := preload("res://Julian/Rooms/Rooms.gd")
+
+enum SCENES {
+	ACCEPTED,
+	RESET,
+	JOIN,
+	RECYCLING
+}
 
 export(NodePath) var door_container_path
 
@@ -15,7 +23,6 @@ func _ready() -> void:
 		self.on_Door_body_entered(door)
 
 func on_Door_body_entered(door : Area2D) -> void:
-	print(door)
 	yield(door, "body_entered")
 	self.exit(door)
 

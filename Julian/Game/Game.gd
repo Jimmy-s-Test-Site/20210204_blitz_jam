@@ -1,5 +1,7 @@
 extends Node2D
 
+signal pressed_enter
+
 const room := preload("res://Julian/Rooms/Rooms.gd")
 
 export(float) var fade_time
@@ -42,9 +44,10 @@ func add_room(room_name : int):
 	if not room_scene.is_connected("add_points", self, "add_points"):
 		room_scene.connect("add_points", self, "add_points")
 	
+	if room_name == self.room.Names.RoomEnd:
+		self.emit_signal("pressed_enter", self.total_points)
+	
 	self.add_child(room_scene)
 
 func add_points(points : int):
 	self.total_points += points
-	
-	print(self.total_points)
