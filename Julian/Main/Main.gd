@@ -42,8 +42,6 @@ func play(option : int, ending : int = -1):
 	self.add_child(scene)
 	
 	match self.playing:
-		PLAY_OPTIONS.GAME:
-			scene.load_room(room.Names.Room0)
 		PLAY_OPTIONS.ENDING:
 			if ending != -1:
 				scene.play(ending)
