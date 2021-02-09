@@ -11,6 +11,7 @@ export (NodePath) var BulletContainerPath
 var velocity = Vector2()
 var on_ground = false
 var is_attacking = false
+var can_push = false
 var can_shoot = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
