@@ -21,7 +21,7 @@ _global_script_class_icons={
 [application]
 
 config/name="20210204 Blitz Jam"
-run/main_scene="res://Julian/Game/Game.tscn"
+run/main_scene="res://Julian/Main/Main.tscn"
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://icon.png"
 
