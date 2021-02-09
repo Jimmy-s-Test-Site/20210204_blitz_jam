@@ -4,13 +4,13 @@ enum BEHAVIOURS {good, bad, neutral}
 enum MOVEMENT {stationary, path, chase}
 
 export (Curve2D) var DronePath						#The # and location of each Stop on Path
-export (int) var DroneSpeed := 500 					#drone movement speed
+export (int) var DroneSpeed := 50 					#drone movement speed
 var move_direction = 0 								#movement facing direction
 export (float) var BulletDelay := 0.7 				#delay before next bullet fires
 export (PackedScene) var Projectile 				#droppable container for projectile scene
 export (NodePath) var ProjectileContainer			#The NODEPATH to the Projectile Container
 export (int) var Energy := 2 						#drone Energy/HP
-export (Vector2) var ShootingAt := Vector2(-1,0)    #what it's target is. Player/Mannequin/free shooting
+export (Vector2) var ShootingAt := Vector2(-1,-1)#was -1 0    #what it's target is. Player/Mannequin/free shooting
 export (BEHAVIOURS) var Hostility = BEHAVIOURS.good	#Tells if drone is good/bad/neutral
 export (MOVEMENT) var Move_Type = MOVEMENT.stationary #Tells type of movement statiionary/path/chase
 export (NodePath) var PlayerNodePath
@@ -33,9 +33,8 @@ func _ready():
 func _physics_process(delta):
 	match Move_Type:
 		MOVEMENT.chase:
-			pass
-			#MoveToPlayer = self.global_position - self.get_node(PlayerNodePath).global_position
-			#self.position = MoveToPlayer + DroneSpeed + delta
+			EnemyToPlayer = self.global_position - self.get_node(PlayerNodePath).global_position
+			position += DroneSpeed * ShootingAt * delta * EnemyToPlayer
 		MOVEMENT.path:
 			MovementLoop(delta) #call movement loop every frame
 		MOVEMENT.stationary:	
@@ -54,7 +53,8 @@ func MovementLoop(delta): #move along the PathFollow2D
 func shoot(): #Method to create an instanced projectile and shoot it a direction
 	print ("SHOOTING!")#############################
 	var new_bullet = Projectile.instance()
-	new_bullet.global_position=self.global_position
+	var DirectionToPlayer = EnemyToPlayer.normalized() #direction bw player and enemy
+	new_bullet.global_position = 	self.global_position + DirectionToPlayer * $SpawnRadius.position.length() * -1
 	new_bullet.name = "Projectile"
 	new_bullet.direction = self.ShootingAt
 	new_bullet.DroneOwner = self
@@ -75,6 +75,7 @@ func _on_DroneVision_body_entered(body):
 		BEHAVIOURS.bad:
 			if bodyIsPlayer or bodyIsGoodDrone:
 				target = body
+				Move_Type = MOVEMENT.chase
 				
 		BEHAVIOURS.good:
 			if bodyIsBadDrone:
