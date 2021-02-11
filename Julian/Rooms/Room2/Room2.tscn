@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Aubrie/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Julian/Tilesets/room_env.tres" type="TileSet" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Justin/Drone/Drone-Green.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Justin/Drone/Drone-Blue.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Justin/RoomTesting/BG Scene.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Julian/Rooms/RoomLabel.tscn" type="PackedScene" id=13]
 
 [node name="Room2" type="Node2D"]
 script = ExtResource( 3 )
@@ -18,8 +19,8 @@ door_container_path = NodePath("DoorContainer")
 mannequin_container_path = NodePath("MannequinContainer")
 
 [node name="Background" parent="." instance=ExtResource( 12 )]
-position = Vector2( -28.4972, -37.3719 )
-scale = Vector2( 0.908078, 1.44834 )
+position = Vector2( -25.9859, -65.0987 )
+scale = Vector2( 0.90588, 1.47588 )
 
 [node name="TileMap" type="TileMap" parent="."]
 scale = Vector2( 2, 2 )
@@ -40,6 +41,7 @@ points = -25
 
 [node name="DoorB" parent="DoorContainer" instance=ExtResource( 4 )]
 position = Vector2( 1267.68, 420.376 )
+destination = 5
 uses_ending = true
 ending_destination = 3
 points = -10
@@ -50,9 +52,8 @@ destination = 3
 points = 20
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 304, 189 )
+position = Vector2( 74, 81 )
 speed = 300
-jump = -400
 BulletContainerPath = NodePath("../../Room2/BulletContainer")
 
 [node name="BulletContainer" type="Node2D" parent="."]
@@ -62,6 +63,15 @@ BulletContainerPath = NodePath("../../Room2/BulletContainer")
 [node name="Mannequin" parent="MannequinContainer" instance=ExtResource( 9 )]
 position = Vector2( 514.048, 124.438 )
 scale = Vector2( 0.92892, 1.0928 )
+
+[node name="HELP!" parent="MannequinContainer/Mannequin" instance=ExtResource( 13 )]
+margin_left = -72.3121
+margin_top = -52.5012
+margin_right = 586.686
+margin_bottom = 266.499
+rect_scale = Vector2( 0.202853, 0.193247 )
+custom_colors/font_color = Color( 0.870588, 0.0941176, 0.0941176, 1 )
+text = "HELP!"
 
 [node name="Mannequin4" parent="MannequinContainer" instance=ExtResource( 9 )]
 position = Vector2( 1440.93, 473.671 )
@@ -78,7 +88,11 @@ position = Vector2( 503.621, 1556.44 )
 [node name="Drone1" parent="DronesContainer" instance=ExtResource( 7 )]
 position = Vector2( 525.784, 97.5158 )
 
+[node name="Path2D" parent="DronesContainer/Drone1" index="0"]
+position = Vector2( -3.74579, 14.983 )
+
 [node name="Drone" parent="DronesContainer/Drone1/Path2D/PathFollow2D" index="0"]
+DroneSpeed = 2
 ProjectileContainer = NodePath("../../../../../BulletContainer")
 PlayerNodePath = NodePath("../../../../../Player")
 Move_Type = 1
@@ -87,32 +101,38 @@ Move_Type = 1
 position = Vector2( 1042.75, 640.976 )
 
 [node name="Drone" parent="DronesContainer/Drone1/Drone1/Path2D/PathFollow2D" index="0"]
+DroneSpeed = 2
 ProjectileContainer = NodePath("../../../../../../BulletContainer")
 PlayerNodePath = NodePath("../../../../../../Player")
 
 [node name="Drone" parent="DronesContainer" instance=ExtResource( 11 )]
 position = Vector2( 728.025, 271.357 )
+DroneSpeed = 2
 ProjectileContainer = NodePath("../../BulletContainer")
 PlayerNodePath = NodePath("../../Player")
 
 [node name="Drone2" parent="DronesContainer" instance=ExtResource( 5 )]
 position = Vector2( 1248.07, 819.592 )
+DroneSpeed = 2
 ProjectileContainer = NodePath("../../BulletContainer")
 PlayerNodePath = NodePath("../../Player")
 
 [node name="Drone3" parent="DronesContainer" instance=ExtResource( 5 )]
 position = Vector2( 1110.59, 760.859 )
+DroneSpeed = 2
 ProjectileContainer = NodePath("../../BulletContainer")
 PlayerNodePath = NodePath("../../Player")
 
 [node name="Drone4" parent="DronesContainer" instance=ExtResource( 5 )]
 position = Vector2( 973.098, 808.913 )
+DroneSpeed = 2
 ProjectileContainer = NodePath("../../BulletContainer")
 PlayerNodePath = NodePath("../../Player")
 
 [node name="Drone5" parent="DronesContainer" instance=ExtResource( 10 )]
 position = Vector2( 1128.69, 226.912 )
 scale = Vector2( 0.92892, 1.0928 )
+DroneSpeed = 2
 ProjectileContainer = NodePath("../../BulletContainer")
 PlayerNodePath = NodePath("../../Player")
 
@@ -121,6 +141,52 @@ position = Vector2( 549.153, 861.195 )
 
 [node name="Block2" parent="." instance=ExtResource( 8 )]
 position = Vector2( 1534.56, 381.708 )
+
+[node name="Labels" type="Node2D" parent="."]
+scale = Vector2( 1, 0.953559 )
+
+[node name="DoorA" parent="Labels" instance=ExtResource( 13 )]
+margin_left = 0.980026
+margin_top = 910.161
+margin_right = 659.978
+margin_bottom = 1229.16
+custom_colors/font_color = Color( 0.870588, 0.0941176, 0.0941176, 1 )
+text = "A"
+
+[node name="DoorB" parent="Labels" instance=ExtResource( 13 )]
+margin_left = 1627.09
+margin_top = 910.175
+margin_right = 2286.08
+margin_bottom = 1229.18
+custom_colors/font_color = Color( 0.870588, 0.0941176, 0.0941176, 1 )
+text = "B"
+
+[node name="DoorC" parent="Labels" instance=ExtResource( 13 )]
+margin_left = 1620.9
+margin_top = 56.4839
+margin_right = 2279.9
+margin_bottom = 375.484
+custom_colors/font_color = Color( 0.870588, 0.0941176, 0.0941176, 1 )
+text = "C
+"
+
+[node name="DANGER!" parent="Labels" instance=ExtResource( 13 )]
+margin_left = 267.544
+margin_top = 933.089
+margin_right = 926.542
+margin_bottom = 1252.09
+custom_colors/font_color = Color( 0.870588, 0.0941176, 0.0941176, 1 )
+text = "DANGER
+=>"
+
+[node name="DEATH!" parent="Labels" instance=ExtResource( 13 )]
+margin_left = 724.335
+margin_top = 620.157
+margin_right = 1383.33
+margin_bottom = 939.157
+custom_colors/font_color = Color( 0.870588, 0.0941176, 0.0941176, 1 )
+text = "DEATH!  I
+		       	V"
 
 [editable path="DronesContainer/Drone1"]
 

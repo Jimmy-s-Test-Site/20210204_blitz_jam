@@ -57,4 +57,5 @@ disabled = true
 [connection signal="timeout" from="bullet_Timer" to="." method="_on_bullet_Timer_timeout"]
 [connection signal="body_entered" from="DroneVision" to="." method="_on_DroneVision_body_entered"]
 [connection signal="body_exited" from="DroneVision" to="." method="_on_DroneVision_body_exited"]
+[connection signal="area_entered" from="DroneCollider" to="." method="_on_DroneCollider_area_entered"]
 [connection signal="body_entered" from="DroneCollider" to="." method="_on_DroneCollider_body_entered"]

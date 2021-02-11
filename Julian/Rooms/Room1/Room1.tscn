@@ -68,7 +68,6 @@ destination = 2
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 168, 296 )
 speed = 300
-jump = -400
 BulletContainerPath = NodePath("../BulletContainer")
 
 [node name="Block" parent="." instance=ExtResource( 5 )]

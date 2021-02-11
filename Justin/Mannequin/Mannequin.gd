@@ -16,6 +16,6 @@ func _on_MannequinArea_body_entered(body):
 		queue_free()
 
 func _on_MannequinArea_area_entered(area):
-	var areaIsProjectile = area.name.begins_with("PlayerShooting")		#if Projectile enters MannequinArea then bodyIsProjectile is true
-	if areaIsProjectile:	#if bodyIsDrone/Projetile is true -> make mannequin disappear
+	var areaIsProjectile = area.name.begins_with("PlayerShooting") or area.name.begins_with("@PlayerShooting")		#if Projectile enters MannequinArea then bodyIsProjectile is true
+	if areaIsProjectile:	#if bodyIsDrone/Projectile is true -> make mannequin disappear
 		queue_free()

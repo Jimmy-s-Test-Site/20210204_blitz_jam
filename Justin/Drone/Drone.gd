@@ -97,3 +97,13 @@ func _on_DroneCollider_body_entered(body):
 	elif bodyIsBullet:
 		print("DRONE HIT")
 		queue_free()
+
+func _on_DroneCollider_area_entered(area):
+	var areaIsProjectile = area.name.begins_with("PlayerShooting") or area.name.begins_with("@PlayerShooting")		#if Projectile enters MannequinArea then bodyIsProjectile is true
+	print(area.name)
+	if areaIsProjectile:	#if bodyIsDrone/Projetile is true -> make mannequin disappear
+		queue_free()
+
+
+func _on_DroneCollider_area_exited(area):
+	pass # Replace with function body.

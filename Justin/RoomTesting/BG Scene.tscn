@@ -84,14 +84,14 @@ position = Vector2( 1110.82, 96.4139 )
 scale = Vector2( 2.50477, 2.40149 )
 frames = SubResource( 1 )
 animation = "Sign2"
-frame = 1
+frame = 2
 playing = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 1870.15, 206.861 )
 frames = SubResource( 2 )
 animation = "Sign1"
-frame = 2
+frame = 3
 playing = true
 
 [node name="AnimatedSprite5" type="AnimatedSprite" parent="."]
@@ -99,7 +99,7 @@ position = Vector2( 117.125, 299.488 )
 scale = Vector2( 2.28108, 1.39034 )
 frames = SubResource( 3 )
 animation = "Sign5"
-frame = 1
+frame = 2
 playing = true
 
 [node name="AnimatedSprite6" type="AnimatedSprite" parent="."]
@@ -107,6 +107,7 @@ position = Vector2( 700.044, 57.1465 )
 scale = Vector2( 1.97008, 3.93059 )
 frames = SubResource( 4 )
 animation = "Sign6"
+frame = 1
 playing = true
 
 [node name="banner-arrow" type="Sprite" parent="."]
